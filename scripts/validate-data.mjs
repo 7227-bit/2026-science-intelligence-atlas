@@ -63,7 +63,7 @@ const EVIDENCE_CLASSIFICATIONS = new Set([
 const LEGACY_ALIASES = {
   eventDate: 'date',
   displayDate: 'date',
-  signalStatus: 'signal',
+  signalStatus: 'legacySignalLabel',
   impactScore: 'score',
   commercialHorizon: 'horizon',
   summary: 'what',
@@ -233,7 +233,11 @@ function validateRecord(record, index, duplicateIds, externalEnhancements) {
     addIssue(result, 'errors', 'UNCONTROLLED_CATEGORY', `${JSON.stringify(record.category)} is not a controlled category.`);
   }
 
-  const signalStatus = isPresent(record.signalStatus) ? record.signalStatus : record.signal;
+  const signalStatus = isPresent(record.signalStatus)
+    ? record.signalStatus
+    : isPresent(record.legacySignalLabel)
+      ? record.legacySignalLabel
+      : record.signal;
   if (isPresent(signalStatus) && !CONTROLLED_SIGNAL_STATUSES.has(signalStatus)) {
     addIssue(result, 'errors', 'UNCONTROLLED_SIGNAL_STATUS', `${JSON.stringify(signalStatus)} is not a controlled signal status.`);
   }
