@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A living science and technology intelligence atlas tracking the breakthroughs shaping the next decade.">
+  <title>2026 Science & Technology Intelligence Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand-mark">SIA</span>
+      <span><strong>2026 Science & Technology</strong><small>Intelligence Atlas</small></span>
+    </a>
+    <nav class="top-nav">
+      <a href="#briefs">Briefs</a>
+      <a href="#landscape">Landscape</a>
+      <a href="#method">Method</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">FOUNDATIONAL EDITION · UPDATED THROUGH 2026</p>
+        <h1>Understand what changed.<br><span>See what comes next.</span></h1>
+        <p class="hero-text">A living intelligence platform that explains major scientific breakthroughs, ranks their bottlenecks, maps their commercial pathways, and connects the technologies shaping the future.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#briefs">Explore intelligence briefs</a>
+          <a class="button secondary" href="#landscape">View technology landscape</a>
+        </div>
+      </div>
+      <div class="orbital-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="planet planet-main"></div>
+        <div class="planet planet-small"></div>
+        <div class="signal-dot dot-one"></div>
+        <div class="signal-dot dot-two"></div>
+        <div class="signal-dot dot-three"></div>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <article><strong id="briefCount">10</strong><span>Intelligence briefs</span></article>
+      <article><strong id="fieldCount">5</strong><span>Technology fields</span></article>
+      <article><strong id="topScore">9.4</strong><span>Highest impact score</span></article>
+      <article><strong>Living</strong><span>Continuously updated</span></article>
+    </section>
+
+    <section class="section" id="briefs">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">INTELLIGENCE LIBRARY</p>
+          <h2>Breakthrough briefs</h2>
+        </div>
+        <p>Search by topic or filter by field. Select any brief for the complete strategic view.</p>
+      </div>
+
+      <div class="controls">
+        <label class="search-box">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Search Artemis, batteries, quantum..." autocomplete="off">
+        </label>
+        <div id="filters" class="filters"></div>
+      </div>
+
+      <div id="briefGrid" class="brief-grid"></div>
+      <p id="emptyState" class="empty-state" hidden>No intelligence briefs match this search.</p>
+    </section>
+
+    <section class="section landscape" id="landscape">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TECHNOLOGY CONVERGENCE</p>
+          <h2>The 2026 landscape</h2>
+        </div>
+        <p>Breakthroughs rarely happen alone. The strongest opportunities appear where fields overlap.</p>
+      </div>
+      <div class="landscape-grid">
+        <article class="convergence-card space-card"><span>SPACE</span><h3>Autonomous lunar infrastructure</h3><p>Reusable launch + robotics + surface power + local resources</p></article>
+        <article class="convergence-card bio-card"><span>BIOTECH</span><h3>Manufacturing human biology</h3><p>Scaffolds + cell engineering + bioreactors + surgical delivery</p></article>
+        <article class="convergence-card quantum-card"><span>QUANTUM</span><h3>Rebuilding digital trust</h3><p>Quantum threat + crypto inventory + migration + secure networks</p></article>
+        <article class="convergence-card energy-card"><span>ENERGY</span><h3>Electrified systems at scale</h3><p>Advanced materials + manufacturing yield + storage + grid integration</p></article>
+      </div>
+    </section>
+
+    <section class="section method" id="method">
+      <div>
+        <p class="eyebrow">THE FRAMEWORK</p>
+        <h2>More than science news</h2>
+        <p>Every brief uses the same strategic lens, making discoveries across completely different fields easier to compare.</p>
+      </div>
+      <ol class="framework-list">
+        <li><strong>What happened?</strong><span>A clear explanation without the jargon.</span></li>
+        <li><strong>Why does it matter?</strong><span>The scientific, societal, and economic consequences.</span></li>
+        <li><strong>What is the bottleneck?</strong><span>The ranked obstacles preventing world-scale impact.</span></li>
+        <li><strong>Where is the opportunity?</strong><span>The infrastructure, industries, and pathways most likely to win.</span></li>
+        <li><strong>What should we watch?</strong><span>The milestones that confirm or weaken the thesis.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>2026 Science & Technology Intelligence Atlas</strong><span>Built as a living strategic reference.</span></div>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <dialog id="briefDialog" class="brief-dialog">
+    <button id="closeDialog" class="close-dialog" aria-label="Close brief">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
