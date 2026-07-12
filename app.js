@@ -9,6 +9,7 @@ const bottleneckNames=b=>b.bottlenecks.map(item=>item.name);
 const opportunityNames=b=>b.opportunityLayers.map(item=>item.name);
 const milestoneNames=b=>b.milestones.map(item=>item.milestone);
 const unlockNames=b=>b.unlockSequence.map(item=>item.step);
+const isValidEventDate=value=>{if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;const parsed=new Date(`${value}T00:00:00Z`);return !Number.isNaN(parsed.valueOf())&&parsed.toISOString().slice(0,10)===value};
 const pendingVerification='Source verification pending editorial review.';
 const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 function sourceUrl(value){
@@ -120,7 +121,7 @@ function renderBottlenecks(){
  $('#bottleneckGrid').innerHTML=defs.map(d=>`<article class="bottleneck-card"><header><span class="bottleneck-rank">${d[0]}</span><span class="severity">${d[2]}</span></header><h2>${d[1]}</h2><p>${d[3]}</p><div class="affected">${d[4].map(x=>`<span>${x}</span>`).join('')}</div></article>`).join('');
 }
 function renderTimeline(){
- const dated=briefs.filter(b=>b.eventDate).sort((a,z)=>new Date(a.eventDate)-new Date(z.eventDate));
+ const dated=briefs.filter(b=>isValidEventDate(b.eventDate)).sort((a,z)=>z.eventDate.localeCompare(a.eventDate)||a.id.localeCompare(z.id));
  $('#timelineTrack').innerHTML=dated.map(b=>`<article class="timeline-event"><time>${b.displayDate.replace(', 2026','')}</time><span class="timeline-dot" style="--event-color:${b.accent}"></span><div class="timeline-content" data-id="${b.id}"><h3>${b.title}</h3><p>${b.subtitle}</p></div></article>`).join('');bindOpen($('#timelineTrack'));
 }
 function renderOpportunities(){
