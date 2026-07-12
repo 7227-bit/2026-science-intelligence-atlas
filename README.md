@@ -27,3 +27,14 @@ Upload these files to the repository root and commit to `main`:
 - `README.md`
 
 GitHub Pages will rebuild automatically.
+
+## Data validation
+
+The canonical intelligence-dossier contract is documented in `docs/DOSSIER_SCHEMA.md`.
+Validate the current records from the repository root with Node.js:
+
+```sh
+node scripts/validate-data.mjs
+```
+
+The validator is dependency-free. It exits with a nonzero status when dossier-schema errors exist. See `VALIDATION_REPORT.md` for the current baseline; failures are expected until the legacy records are migrated in later changes.
