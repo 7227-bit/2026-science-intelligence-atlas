@@ -1,21 +1,29 @@
-# 2026 Science & Technology Intelligence Atlas
+# 2026 Science & Technology Intelligence Atlas — Version 3
 
-A living, interactive science intelligence platform that explains major breakthroughs, ranks their bottlenecks, maps commercial pathways, and connects the technologies shaping the next decade.
+A static, GitHub Pages-ready science intelligence operating system.
 
-## Current version
+## Version 3 additions
 
-- Responsive static website
-- Searchable intelligence library
-- Category filters
-- Ten foundational intelligence briefs
-- Interactive full-brief modal views
-- Technology convergence section
-- GitHub Pages ready
+- Mission-control style application shell
+- Fixed desktop navigation and mobile header
+- Dashboard with live signal matrix
+- Searchable and sortable discovery library
+- Full technology intelligence dossiers
+- Interactive technology relationship map
+- Cross-field bottleneck index
+- Vertical discovery timeline
+- Industry opportunity map
+- Command-palette search (`Ctrl/Cmd + K`)
+- Responsive layouts
 
-## Run locally
+## Publish
 
-Open `index.html` in a browser.
+Upload these files to the repository root and commit to `main`:
 
-## Publish with GitHub Pages
+- `index.html`
+- `styles.css`
+- `app.js`
+- `data.js`
+- `README.md`
 
-Repository settings → Pages → Deploy from a branch → `main` / root.
+GitHub Pages will rebuild automatically.

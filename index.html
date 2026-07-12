@@ -1,49 +1,193 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="A living science and technology intelligence atlas.">
-<title>2026 Science & Technology Intelligence Atlas</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A living science and technology intelligence operating system.">
+  <meta name="theme-color" content="#06101d">
+  <title>2026 Science & Technology Intelligence Atlas</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="noise"></div>
-<header class="site-header">
-<a class="brand" href="#top"><span class="brand-mark">SIA</span><span><strong>2026 Science & Technology</strong><small>Intelligence Atlas</small></span></a>
-<nav><a href="#center">Dashboard</a><a href="#briefs">Briefs</a><a href="#timeline">Timeline</a><a href="#landscape">Convergence</a></nav>
-</header>
-<main id="top">
-<section class="hero">
-<div class="hero-copy"><div class="live-chip"><i></i> LIVE INTELLIGENCE SYSTEM</div><p class="eyebrow">FOUNDATIONAL EDITION · JULY 2026</p>
-<h1>Understand what changed.<br><span>See what comes next.</span></h1>
-<p class="hero-text">A living intelligence platform that explains major breakthroughs, ranks their bottlenecks, maps commercial pathways, and reveals where technologies converge.</p>
-<div class="hero-actions"><a class="button primary" href="#center">Enter the intelligence center</a><a class="button secondary" href="#briefs">Explore all briefs</a></div></div>
-<div class="signal-map"><div class="map-head"><span>2026 SIGNAL MAP</span><b>LIVE</b></div><div class="map-stage"><div class="core">2026</div><span class="node n1">SPACE</span><span class="node n2">QUANTUM</span><span class="node n3">ENERGY</span><span class="node n4">BIOTECH</span><span class="node n5">MATERIALS</span></div><div class="map-foot"><span>10 breakthroughs</span><span>5 fields</span></div></div>
-</section>
-<section class="dashboard" id="center"><article><strong id="briefCount">10</strong><span>Intelligence briefs</span></article><article><strong id="fieldCount">5</strong><span>Technology fields</span></article><article><strong id="topScore">9.4</strong><span>Highest impact score</span></article><article><strong>Interfaces</strong><span>Recurring choke point</span></article></section>
+  <div class="starfield" aria-hidden="true"></div>
 
-<section class="section">
-<div class="section-heading"><div><p class="eyebrow">TODAY'S INTELLIGENCE</p><h2>Where the signal is strongest</h2></div><p>A strategic reading of the atlas before you enter the full library.</p></div>
-<div class="intel-grid"><article id="featuredBrief" class="featured"></article><div class="signals"><article><small>FASTEST-MOVING FIELD</small><h3>Biotechnology</h3><p>Regenerative medicine and programmable biology are moving from proof of concept toward repeatable manufacturing.</p></article><article><small>BIGGEST BOTTLENECK</small><h3>Manufacturing consistency</h3><p>Across batteries, organs, quantum systems, and carbon removal, scaling without defects is the common choke point.</p></article><article><small>WATCH NEXT</small><h3>Infrastructure demonstrations</h3><p>Human trials, field validation, surface power, and cryptographic migration will determine what becomes a system.</p></article></div></div>
-</section>
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard" data-route="dashboard">
+      <span class="brand-mark">SIA</span>
+      <span><strong>Science Intelligence</strong><small>2026 Atlas</small></span>
+    </a>
 
-<section class="section category-section"><div class="section-heading"><div><p class="eyebrow">FIELD COMMAND</p><h2>Explore by domain</h2></div><p>Enter a field to see its strongest signals, bottlenecks, and connected technologies.</p></div><div id="categoryHub" class="category-grid"></div></section>
+    <nav class="side-nav" aria-label="Atlas navigation">
+      <a class="active" href="#dashboard" data-route="dashboard"><span>◉</span>Dashboard</a>
+      <a href="#briefs" data-route="briefs"><span>▦</span>Discoveries</a>
+      <a href="#map" data-route="map"><span>⌘</span>Technology map</a>
+      <a href="#bottlenecks" data-route="bottlenecks"><span>△</span>Bottlenecks</a>
+      <a href="#timeline" data-route="timeline"><span>↗</span>Timeline</a>
+      <a href="#investment" data-route="investment"><span>◇</span>Opportunity</a>
+    </nav>
 
-<section class="section" id="briefs"><div class="section-heading"><div><p class="eyebrow">INTELLIGENCE LIBRARY</p><h2>Breakthrough briefs</h2></div><p>Search by topic or filter by field. Select any brief for the complete strategic view.</p></div>
-<div class="controls"><label class="search-box"><span>Search the atlas</span><input id="searchInput" type="search" placeholder="Search Artemis, batteries, quantum..."></label><div id="filters" class="filters"></div></div><div id="briefGrid" class="brief-grid"></div><p id="emptyState" class="empty-state" hidden>No matching briefs.</p></section>
+    <div class="sidebar-status">
+      <span class="status-dot"></span>
+      <div><strong>System live</strong><small>Updated July 2026</small></div>
+    </div>
+  </aside>
 
-<section class="section timeline-section" id="timeline"><div class="section-heading"><div><p class="eyebrow">2026 TIMELINE</p><h2>What changed, in sequence</h2></div><p>Follow the discoveries chronologically and see momentum accumulate across fields.</p></div><div id="timelineTrack" class="timeline-track"></div></section>
+  <header class="mobile-header">
+    <a class="brand" href="#dashboard" data-route="dashboard"><span class="brand-mark">SIA</span><strong>Intelligence Atlas</strong></a>
+    <button id="mobileMenu" aria-label="Open navigation">☰</button>
+  </header>
 
-<section class="section landscape" id="landscape"><div class="section-heading"><div><p class="eyebrow">TECHNOLOGY CONVERGENCE</p><h2>The 2026 landscape</h2></div><p>The strongest opportunities appear where fields overlap.</p></div><div class="landscape-grid">
-<article class="convergence-card space-card"><span>SPACE × ROBOTICS × ENERGY</span><h3>Autonomous lunar infrastructure</h3><p>Reusable launch + robotics + surface power + local resources</p></article>
-<article class="convergence-card bio-card"><span>BIOTECH × MANUFACTURING</span><h3>Manufacturing human biology</h3><p>Scaffolds + cell engineering + bioreactors + surgical delivery</p></article>
-<article class="convergence-card quantum-card"><span>QUANTUM × CYBERSECURITY</span><h3>Rebuilding digital trust</h3><p>Quantum threat + crypto inventory + migration + secure networks</p></article>
-<article class="convergence-card energy-card"><span>ENERGY × MATERIALS</span><h3>Electrified systems at scale</h3><p>Advanced materials + manufacturing yield + storage + grid integration</p></article></div></section>
+  <main class="shell">
+    <div class="topbar">
+      <div>
+        <p class="breadcrumb">2026 / <span id="currentSection">Dashboard</span></p>
+        <p class="system-line"><i></i> LIVE SCIENCE INTELLIGENCE SYSTEM</p>
+      </div>
+      <button id="commandButton" class="command-button"><span>⌕</span> Search the atlas <kbd>Ctrl K</kbd></button>
+    </div>
 
-<section class="section bottlenecks"><div class="section-heading"><div><p class="eyebrow">BOTTLENECK INDEX</p><h2>Where progress gets stuck</h2></div><p>Recurring obstacles across otherwise unrelated breakthroughs.</p></div>
-<div class="bottleneck-list"><article><b>01</b><div><h3>Manufacturing consistency</h3><p>Defects, interfaces, and repeatability limit batteries, organs, quantum devices, and biological products.</p></div><span>Cross-field</span></article><article><b>02</b><div><h3>Infrastructure before scale</h3><p>Launch networks, storage pipelines, secure cryptography, and clinical systems must exist before adoption accelerates.</p></div><span>Systemic</span></article><article><b>03</b><div><h3>Real-world validation</h3><p>Field trials, human trials, long-duration tests, and production qualification separate promising science from usable technology.</p></div><span>Commercial</span></article></div></section>
-</main>
-<footer><div><strong>2026 Science & Technology Intelligence Atlas</strong><span>Built as a living strategic reference.</span></div><a href="#top">Back to top ↑</a></footer>
-<dialog id="briefDialog" class="brief-dialog"><button id="closeDialog" class="close-dialog">×</button><div id="dialogContent"></div></dialog>
-<script src="data.js"></script><script src="app.js"></script>
-</body></html>
+    <section class="view active" id="view-dashboard" data-view="dashboard">
+      <div class="hero-grid">
+        <article class="hero-copy">
+          <p class="eyebrow">INTELLIGENCE OPERATING SYSTEM</p>
+          <h1>See the forces<br><span>shaping what comes next.</span></h1>
+          <p>The Atlas connects discoveries to bottlenecks, industries, dependencies, and future milestones—so science is understood as a system, not a stream of headlines.</p>
+          <div class="hero-actions">
+            <button class="primary-action" data-go="briefs">Enter discovery library</button>
+            <button class="ghost-action" data-go="map">Explore technology map</button>
+          </div>
+        </article>
+
+        <article class="command-center">
+          <div class="panel-head"><span>LIVE SIGNAL MATRIX</span><b>2026</b></div>
+          <div id="signalMatrix" class="signal-matrix"></div>
+          <div class="panel-foot"><span id="matrixBriefs">10 signals</span><span id="matrixFields">5 domains</span></div>
+        </article>
+      </div>
+
+      <div class="metric-strip">
+        <article><small>TRACKED BRIEFS</small><strong id="metricBriefs">10</strong><span>Structured intelligence records</span></article>
+        <article><small>PEAK IMPACT</small><strong id="metricImpact">9.4</strong><span>Highest current score</span></article>
+        <article><small>DOMINANT CHOKE POINT</small><strong>Interfaces</strong><span>Repeated across major fields</span></article>
+        <article><small>WATCH WINDOW</small><strong>12–24 mo.</strong><span>Validation and infrastructure</span></article>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="panel featured-panel">
+          <div class="panel-title"><div><p class="eyebrow">HIGHEST-IMPACT SIGNAL</p><h2 id="featuredTitle">Artemis II</h2></div><span id="featuredScore" class="impact-badge">9.4</span></div>
+          <p id="featuredTakeaway"></p>
+          <div id="featuredChain" class="unlock-chain"></div>
+          <button id="featuredOpen" class="text-button">Open intelligence dossier →</button>
+        </article>
+
+        <article class="panel momentum-panel">
+          <div class="panel-title"><div><p class="eyebrow">FIELD MOMENTUM</p><h2>Where activity is clustering</h2></div></div>
+          <div id="momentumBars" class="momentum-bars"></div>
+        </article>
+
+        <article class="panel watch-panel">
+          <div class="panel-title"><div><p class="eyebrow">WATCH NEXT</p><h2>Validation gates</h2></div></div>
+          <div class="watch-list">
+            <span><b>01</b> Human clinical translation</span>
+            <span><b>02</b> Factory-scale manufacturing yield</span>
+            <span><b>03</b> Infrastructure demonstrations</span>
+            <span><b>04</b> Long-duration system performance</span>
+          </div>
+        </article>
+
+        <article class="panel flow-panel">
+          <div class="panel-title"><div><p class="eyebrow">CIVILIZATION PATHWAY</p><h2>From discovery to system</h2></div></div>
+          <div class="system-flow">
+            <span>DISCOVERY</span><i>→</i><span>VALIDATION</span><i>→</i><span>INFRASTRUCTURE</span><i>→</i><span>SCALE</span><i>→</i><span>IMPACT</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="view" id="view-briefs" data-view="briefs">
+      <div class="page-heading">
+        <div><p class="eyebrow">DISCOVERY INTELLIGENCE</p><h1>Breakthrough dossiers</h1></div>
+        <p>Search every tracked signal and open a complete strategic profile.</p>
+      </div>
+
+      <div class="library-tools">
+        <label class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="Search Artemis, batteries, quantum, manufacturing..."></label>
+        <div id="filters" class="filters"></div>
+        <select id="sortSelect" aria-label="Sort briefs">
+          <option value="impact">Highest impact</option>
+          <option value="date">Newest dated</option>
+          <option value="title">Alphabetical</option>
+        </select>
+      </div>
+
+      <div id="briefGrid" class="brief-grid"></div>
+      <p id="emptyState" class="empty-state" hidden>No intelligence briefs match this search.</p>
+    </section>
+
+    <section class="view" id="view-map" data-view="map">
+      <div class="page-heading">
+        <div><p class="eyebrow">INTELLIGENCE GRAPH</p><h1>Technology relationship map</h1></div>
+        <p>Select a discovery to reveal the fields, bottlenecks, and opportunity layers connected to it.</p>
+      </div>
+
+      <div class="map-layout">
+        <article class="panel graph-panel">
+          <svg id="techGraph" viewBox="0 0 1000 650" role="img" aria-label="Interactive technology relationship graph"></svg>
+        </article>
+        <aside class="panel graph-inspector">
+          <p class="eyebrow">SELECTED NODE</p>
+          <h2 id="graphTitle">Artemis II</h2>
+          <p id="graphSummary"></p>
+          <div id="graphTags" class="tag-cloud"></div>
+          <button id="graphOpen" class="primary-action">Open dossier</button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-bottlenecks" data-view="bottlenecks">
+      <div class="page-heading">
+        <div><p class="eyebrow">CROSS-FIELD ANALYSIS</p><h1>Bottleneck index</h1></div>
+        <p>Study the recurring problems that slow otherwise unrelated technologies.</p>
+      </div>
+      <div id="bottleneckGrid" class="bottleneck-grid"></div>
+    </section>
+
+    <section class="view" id="view-timeline" data-view="timeline">
+      <div class="page-heading">
+        <div><p class="eyebrow">2026 CHRONOLOGY</p><h1>Discovery timeline</h1></div>
+        <p>Track how signals accumulate across fields and where momentum changes.</p>
+      </div>
+      <div id="timelineTrack" class="timeline-vertical"></div>
+    </section>
+
+    <section class="view" id="view-investment" data-view="investment">
+      <div class="page-heading">
+        <div><p class="eyebrow">OPPORTUNITY LENS</p><h1>Industry opportunity map</h1></div>
+        <p>Durable infrastructure and enabling technologies—not stock tips—ranked by cross-field relevance.</p>
+      </div>
+      <div id="opportunityGrid" class="opportunity-grid"></div>
+      <article class="panel opportunity-note">
+        <p class="eyebrow">READING THE SIGNAL</p>
+        <h2>Enablers often win before headline technologies.</h2>
+        <p>Metrology, manufacturing equipment, cryogenics, advanced materials, bioreactors, secure infrastructure, and power systems can serve multiple breakthrough families at once.</p>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="dossierDialog" class="dossier-dialog">
+    <button id="closeDialog" class="close-dialog" aria-label="Close dossier">×</button>
+    <div id="dossierContent"></div>
+  </dialog>
+
+  <dialog id="commandDialog" class="command-dialog">
+    <form method="dialog">
+      <label class="command-search"><span>⌕</span><input id="commandInput" placeholder="Search discoveries, bottlenecks, opportunities..." autocomplete="off"></label>
+      <div id="commandResults" class="command-results"></div>
+      <p class="command-help">Enter opens a result · Esc closes</p>
+    </form>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
