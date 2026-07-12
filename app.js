@@ -1,98 +1,13 @@
-
-const briefs = window.ATLAS_BRIEFS;
-const grid = document.querySelector('#briefGrid');
-const filtersNode = document.querySelector('#filters');
-const searchInput = document.querySelector('#searchInput');
-const emptyState = document.querySelector('#emptyState');
-const dialog = document.querySelector('#briefDialog');
-const dialogContent = document.querySelector('#dialogContent');
-let activeCategory = 'All';
-
-const categories = ['All', ...new Set(briefs.map(b => b.category))];
-
-document.querySelector('#briefCount').textContent = briefs.length;
-document.querySelector('#fieldCount').textContent = categories.length - 1;
-document.querySelector('#topScore').textContent = Math.max(...briefs.map(b => b.score)).toFixed(1);
-
-function renderFilters() {
-  filtersNode.innerHTML = categories.map(category =>
-    `<button class="filter ${category === activeCategory ? 'active' : ''}" data-category="${category}">${category}</button>`
-  ).join('');
-  filtersNode.querySelectorAll('.filter').forEach(button => {
-    button.addEventListener('click', () => {
-      activeCategory = button.dataset.category;
-      renderFilters();
-      renderBriefs();
-    });
-  });
-}
-
-function renderBriefs() {
-  const term = searchInput.value.trim().toLowerCase();
-  const visible = briefs.filter(brief => {
-    const categoryMatch = activeCategory === 'All' || brief.category === activeCategory;
-    const haystack = [brief.id, brief.title, brief.subtitle, brief.category, brief.what, ...brief.bottlenecks, ...brief.opportunities].join(' ').toLowerCase();
-    return categoryMatch && haystack.includes(term);
-  });
-
-  grid.innerHTML = visible.map(brief => `
-    <article class="brief-card" tabindex="0" role="button" data-id="${brief.id}" style="--card-accent:${brief.accent}">
-      <div class="brief-meta"><span class="brief-id">${brief.id}</span><span>${brief.date}</span></div>
-      <h3>${brief.title}</h3>
-      <p>${brief.subtitle}</p>
-      <div class="score-row">
-        <span class="score">${brief.score.toFixed(1)} <small>/ 10</small></span>
-        <span class="signal">${brief.signal}</span>
-      </div>
-    </article>
-  `).join('');
-
-  emptyState.hidden = visible.length > 0;
-
-  grid.querySelectorAll('.brief-card').forEach(card => {
-    const open = () => openBrief(card.dataset.id);
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') open();
-    });
-  });
-}
-
-function list(items) {
-  return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
-}
-
-function openBrief(id) {
-  const brief = briefs.find(item => item.id === id);
-  dialog.style.setProperty('--dialog-accent', brief.accent);
-  dialogContent.innerHTML = `
-    <article class="dialog-inner">
-      <p class="dialog-kicker">${brief.id} · ${brief.category}</p>
-      <h2>${brief.title}</h2>
-      <p class="dialog-subtitle">${brief.subtitle}</p>
-      <div class="dialog-pills">
-        <span>${brief.date}</span><span>${brief.signal}</span><span>Impact ${brief.score.toFixed(1)}/10</span><span>${brief.horizon}</span>
-      </div>
-      <div class="dialog-grid">
-        <section class="dialog-section full"><h3>WHAT HAPPENED</h3><p>${brief.what}</p></section>
-        <section class="dialog-section"><h3>WHY IT MATTERS</h3>${list(brief.why)}</section>
-        <section class="dialog-section"><h3>RANKED BOTTLENECKS</h3>${list(brief.bottlenecks)}</section>
-        <section class="dialog-section"><h3>OPPORTUNITY MAP</h3>${list(brief.opportunities)}</section>
-        <section class="dialog-section"><h3>WATCH CLOSELY</h3>${list(brief.watch)}</section>
-        <section class="dialog-section full"><h3>UNLOCK SEQUENCE</h3><p class="chain">${brief.chain}</p></section>
-        <section class="dialog-section full"><h3>STRATEGIC TAKEAWAY</h3><p>${brief.takeaway}</p></section>
-      </div>
-    </article>`;
-  dialog.showModal();
-}
-
-document.querySelector('#closeDialog').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => {
-  const rect = dialog.getBoundingClientRect();
-  const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
-  if (!inside) dialog.close();
-});
-searchInput.addEventListener('input', renderBriefs);
-
-renderFilters();
-renderBriefs();
+const briefs=window.ATLAS_BRIEFS,grid=document.querySelector('#briefGrid'),filtersNode=document.querySelector('#filters'),searchInput=document.querySelector('#searchInput'),emptyState=document.querySelector('#emptyState'),dialog=document.querySelector('#briefDialog'),dialogContent=document.querySelector('#dialogContent');let activeCategory='All';
+const categories=['All',...new Set(briefs.map(b=>b.category))],categoryColors={Space:'#62b8ff',Quantum:'#a682ff',Energy:'#f3a43b',Biotech:'#4ed09a',Materials:'#e26f86'};
+briefCount.textContent=briefs.length;fieldCount.textContent=categories.length-1;topScore.textContent=Math.max(...briefs.map(b=>b.score)).toFixed(1);
+function renderFilters(){filtersNode.innerHTML=categories.map(c=>`<button class="filter ${c===activeCategory?'active':''}" data-category="${c}">${c}</button>`).join('');filtersNode.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{activeCategory=b.dataset.category;renderFilters();renderBriefs();});}
+function renderBriefs(){const term=searchInput.value.trim().toLowerCase(),visible=briefs.filter(b=>(activeCategory==='All'||b.category===activeCategory)&&[b.id,b.title,b.subtitle,b.category,b.what,...b.bottlenecks,...b.opportunities].join(' ').toLowerCase().includes(term));grid.innerHTML=visible.map(b=>`<article class="brief-card" tabindex="0" data-id="${b.id}" style="--card-accent:${b.accent}"><div class="brief-meta"><span class="brief-id">${b.id}</span><span>${b.date}</span></div><h3>${b.title}</h3><p>${b.subtitle}</p><div class="score-row"><span class="score">${b.score.toFixed(1)} <small>/10</small></span><span class="signal">${b.signal}</span></div></article>`).join('');emptyState.hidden=visible.length>0;bindOpen(grid);}
+function bindOpen(root){root.querySelectorAll('[data-id]').forEach(el=>{el.onclick=()=>openBrief(el.dataset.id);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')openBrief(el.dataset.id)}})}
+function list(items){return `<ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul>`}
+function openBrief(id){const b=briefs.find(x=>x.id===id);dialog.style.setProperty('--dialog-accent',b.accent);dialogContent.innerHTML=`<article class="dialog-inner"><p class="dialog-kicker">${b.id} · ${b.category}</p><h2>${b.title}</h2><p class="dialog-subtitle">${b.subtitle}</p><div class="dialog-pills"><span>${b.date}</span><span>${b.signal}</span><span>Impact ${b.score.toFixed(1)}/10</span><span>${b.horizon}</span></div><div class="dialog-grid"><section class="dialog-section full"><h3>WHAT HAPPENED</h3><p>${b.what}</p></section><section class="dialog-section"><h3>WHY IT MATTERS</h3>${list(b.why)}</section><section class="dialog-section"><h3>RANKED BOTTLENECKS</h3>${list(b.bottlenecks)}</section><section class="dialog-section"><h3>OPPORTUNITY MAP</h3>${list(b.opportunities)}</section><section class="dialog-section"><h3>WATCH CLOSELY</h3>${list(b.watch)}</section><section class="dialog-section full"><h3>UNLOCK SEQUENCE</h3><p class="chain">${b.chain}</p></section><section class="dialog-section full"><h3>STRATEGIC TAKEAWAY</h3><p>${b.takeaway}</p></section></div></article>`;dialog.showModal();}
+function renderFeatured(){const b=[...briefs].sort((a,z)=>z.score-a.score)[0];featuredBrief.style.setProperty('--card-accent',b.accent);featuredBrief.innerHTML=`<small>HIGHEST-IMPACT BRIEF · ${b.id}</small><h3>${b.title}</h3><p>${b.takeaway}</p><div class="featured-score">${b.score.toFixed(1)} <small>/ 10 IMPACT</small></div>`;featuredBrief.dataset.id=b.id;bindOpen(featuredBrief.parentElement);}
+function renderCategories(){categoryHub.innerHTML=categories.slice(1).map(c=>{const items=briefs.filter(b=>b.category===c),top=[...items].sort((a,z)=>z.score-a.score)[0];return `<article class="category-card" data-category="${c}" style="--cat:${categoryColors[c]}"><b>${c.toUpperCase()}</b><h3>${items.length} briefs</h3><p>Strongest signal: ${top.title}</p><span>${top.score.toFixed(1)} peak impact →</span></article>`}).join('');categoryHub.querySelectorAll('.category-card').forEach(el=>el.onclick=()=>{activeCategory=el.dataset.category;renderFilters();renderBriefs();document.querySelector('#briefs').scrollIntoView();});}
+function renderTimeline(){const dated=briefs.filter(b=>/March|April/.test(b.date)).sort((a,z)=>new Date(a.date)-new Date(z.date));timelineTrack.innerHTML=dated.map(b=>`<article class="timeline-item" data-id="${b.id}" style="--accent:${b.accent}"><time>${b.date}</time><h3>${b.title}</h3><p>${b.subtitle}</p></article>`).join('');bindOpen(timelineTrack);}
+closeDialog.onclick=()=>dialog.close();dialog.onclick=e=>{const r=dialog.getBoundingClientRect();if(!(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom))dialog.close()};searchInput.oninput=renderBriefs;
+renderFilters();renderBriefs();renderFeatured();renderCategories();renderTimeline();
