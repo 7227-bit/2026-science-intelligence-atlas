@@ -43,14 +43,24 @@ const scoring=b=>({
   Momentum:b.category==='Biotechnology'?9.0:b.category==='Energy'?8.6:b.category==='Space'?8.4:7.8
 });
 
+const mobileNav=$('#mobileNav'),mobileMenu=$('#mobileMenu');
+
 function route(name){
   $$('.view').forEach(v=>v.classList.toggle('active',v.dataset.view===name));
-  $$('.side-nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===name));
+  $$('.side-nav a,.mobile-nav a').forEach(a=>{
+    const isActive=a.dataset.route===name;
+    a.classList.toggle('active',isActive);
+    if(isActive)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+  });
   $('#currentSection').textContent=name[0].toUpperCase()+name.slice(1);
   location.hash=name;
   scrollTo({top:0,behavior:'instant'});
 }
-$$('[data-route]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();route(a.dataset.route)}));
+$$('[data-route]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  route(a.dataset.route);
+  if(mobileNav.open&&mobileNav.contains(a))mobileNav.close();
+}));
 $$('[data-go]').forEach(b=>b.onclick=()=>route(b.dataset.go));
 window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if($(`[data-view="${h}"]`))route(h)});
 if(location.hash&&$(`[data-view="${location.hash.slice(1)}"]`))route(location.hash.slice(1));
@@ -149,9 +159,28 @@ function renderCommand(){
 }
 function openCommand(){commandIndex=0;$('#commandInput').value='';renderCommand();$('#commandDialog').showModal();setTimeout(()=>$('#commandInput').focus(),50)}
 $('#commandButton').onclick=openCommand;
+$('#mobileCommandButton').onclick=openCommand;
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openCommand()}});
 $('#commandInput').oninput=()=>{commandIndex=0;renderCommand()};
 $('#commandInput').onkeydown=e=>{const arr=commandResults(e.currentTarget.value);if(e.key==='ArrowDown'){commandIndex=Math.min(commandIndex+1,arr.length-1);renderCommand();e.preventDefault()}if(e.key==='ArrowUp'){commandIndex=Math.max(commandIndex-1,0);renderCommand();e.preventDefault()}if(e.key==='Enter'&&arr[commandIndex]){$('#commandDialog').close();openDossier(arr[commandIndex].id);e.preventDefault()}};
-$('#mobileMenu').onclick=()=>{const next=prompt('Go to: dashboard, briefs, map, bottlenecks, timeline, or investment','dashboard');if(next&&$(`[data-view="${next.toLowerCase()}"]`))route(next.toLowerCase())};
+function openMobileNav(){
+  if(mobileNav.open)return;
+  mobileMenu.setAttribute('aria-expanded','true');
+  mobileMenu.setAttribute('aria-label','Close navigation');
+  mobileNav.showModal();
+  requestAnimationFrame(()=>mobileNav.querySelector('[aria-current="page"]')?.focus());
+}
+function closeMobileNav(){if(mobileNav.open)mobileNav.close()}
+mobileMenu.onclick=openMobileNav;
+$('#closeMobileNav').onclick=closeMobileNav;
+mobileNav.addEventListener('click',e=>{if(!e.target.closest('.mobile-nav-drawer'))closeMobileNav()});
+mobileNav.addEventListener('cancel',e=>{e.preventDefault();closeMobileNav()});
+mobileNav.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();closeMobileNav()}});
+mobileNav.addEventListener('close',()=>{
+  mobileMenu.setAttribute('aria-expanded','false');
+  mobileMenu.setAttribute('aria-label','Open navigation');
+  mobileMenu.focus();
+});
+window.addEventListener('resize',()=>{if(innerWidth>760&&mobileNav.open)closeMobileNav()});
 
 renderMatrix();renderDashboard();renderFilters();renderBriefs();renderGraph();renderBottlenecks();renderTimeline();renderOpportunities();

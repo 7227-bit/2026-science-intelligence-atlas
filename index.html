@@ -18,7 +18,7 @@
     </a>
 
     <nav class="side-nav" aria-label="Atlas navigation">
-      <a class="active" href="#dashboard" data-route="dashboard"><span>◉</span>Dashboard</a>
+      <a class="active" href="#dashboard" data-route="dashboard" aria-current="page"><span>◉</span>Dashboard</a>
       <a href="#briefs" data-route="briefs"><span>▦</span>Discoveries</a>
       <a href="#map" data-route="map"><span>⌘</span>Technology map</a>
       <a href="#bottlenecks" data-route="bottlenecks"><span>△</span>Bottlenecks</a>
@@ -34,8 +34,36 @@
 
   <header class="mobile-header">
     <a class="brand" href="#dashboard" data-route="dashboard"><span class="brand-mark">SIA</span><strong>Intelligence Atlas</strong></a>
-    <button id="mobileMenu" aria-label="Open navigation">☰</button>
+    <div class="mobile-header-actions">
+      <button id="mobileCommandButton" class="mobile-header-button" type="button" aria-label="Search the atlas">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+      </button>
+      <button id="mobileMenu" class="mobile-header-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav">
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
   </header>
+
+  <dialog id="mobileNav" class="mobile-nav-dialog" aria-labelledby="mobileNavTitle">
+    <div class="mobile-nav-drawer">
+      <div class="mobile-nav-head">
+        <div><p class="eyebrow">ATLAS SECTIONS</p><h2 id="mobileNavTitle">Navigation</h2></div>
+        <button id="closeMobileNav" class="mobile-nav-close" type="button" aria-label="Close navigation">&times;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile Atlas navigation">
+        <a class="active" href="#dashboard" data-route="dashboard" aria-current="page"><span aria-hidden="true">01</span>Dashboard</a>
+        <a href="#briefs" data-route="briefs"><span aria-hidden="true">02</span>Discoveries</a>
+        <a href="#map" data-route="map"><span aria-hidden="true">03</span>Technology map</a>
+        <a href="#bottlenecks" data-route="bottlenecks"><span aria-hidden="true">04</span>Bottlenecks</a>
+        <a href="#timeline" data-route="timeline"><span aria-hidden="true">05</span>Timeline</a>
+        <a href="#investment" data-route="investment"><span aria-hidden="true">06</span>Opportunity</a>
+      </nav>
+      <div class="mobile-nav-status">
+        <span class="status-dot"></span>
+        <div><strong>System live</strong><small>Updated July 2026</small></div>
+      </div>
+    </div>
+  </dialog>
 
   <main class="shell">
     <div class="topbar">
