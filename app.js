@@ -9,6 +9,31 @@ const bottleneckNames=b=>b.bottlenecks.map(item=>item.name);
 const opportunityNames=b=>b.opportunityLayers.map(item=>item.name);
 const milestoneNames=b=>b.milestones.map(item=>item.milestone);
 const unlockNames=b=>b.unlockSequence.map(item=>item.step);
+const pendingVerification='Source verification pending editorial review.';
+const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+function sourceUrl(value){
+ try{const url=new URL(value);return url.protocol==='https:'?url.href:null}catch{return null}
+}
+function renderSource(source){
+ const url=sourceUrl(source.url),meta=[source.publisher,source.publicationDate,source.sourceType].filter(Boolean).map(escapeHtml).join(' · ');
+ const supports=Array.isArray(source.supports)&&source.supports.length?`<div class="source-supports"><strong>Supports</strong><div>${source.supports.map(section=>`<span>${escapeHtml(section)}</span>`).join('')}</div></div>`:'';
+ const link=url?`<a class="source-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="Open source: ${escapeHtml(source.title)} from ${escapeHtml(source.publisher)} (opens external site)"><span>Open original source</span><small>Opens external site ↗</small></a>`:'';
+ return `<article class="source-card"><h4>${escapeHtml(source.title)}</h4>${meta?`<p class="source-meta">${meta}</p>`:''}${link}${supports}</article>`;
+}
+function renderClassification(entry){
+ const type=entry.classification||'Unclassified',className=['Evidence','Inference','Forecast','Scenario'].includes(type)?type.toLowerCase():'unclassified';
+ const basis=entry.basis?`<p class="classification-basis"><strong>Basis</strong> ${escapeHtml(entry.basis)}</p>`:'';
+ const limitations=entry.limitations?`<p class="classification-basis"><strong>Limitations</strong> ${escapeHtml(entry.limitations)}</p>`:'';
+ const sourceIds=Array.isArray(entry.sourceIds)&&entry.sourceIds.length?`<p class="classification-sources"><strong>Source IDs</strong> ${entry.sourceIds.map(escapeHtml).join(', ')}</p>`:'';
+ return `<article class="classification-card"><div class="classification-head"><span class="classification-badge classification-${className}">${escapeHtml(type)}</span><strong>${escapeHtml(entry.section)}</strong></div><p>${escapeHtml(entry.statement)}</p>${basis}${limitations}${sourceIds}</article>`;
+}
+function renderSourcesAndEvidence(b){
+ const sources=Array.isArray(b.sources)?b.sources:[],classifications=Array.isArray(b.evidenceClassification)?b.evidenceClassification:[];
+ if(!sources.length&&!classifications.length)return `<section class="dossier-section full evidence-panel"><h3>SOURCES AND EVIDENCE</h3><p class="evidence-empty" role="status">${pendingVerification}</p></section>`;
+ const sourceContent=sources.length?`<div class="source-grid">${sources.map(renderSource).join('')}</div>`:`<p class="evidence-empty" role="status">${pendingVerification}</p>`;
+ const classificationContent=classifications.length?`<div class="classification-grid">${classifications.map(renderClassification).join('')}</div>`:`<p class="evidence-empty" role="status">${pendingVerification}</p>`;
+ return `<section class="dossier-section full evidence-panel"><h3>SOURCES AND EVIDENCE</h3><div class="evidence-block"><h4>Sources</h4>${sourceContent}</div><div class="evidence-block"><h4>Evidence classification</h4>${classificationContent}</div></section>`;
+}
 const scoring=b=>({
   Scientific:Math.min(10,b.impactScore+.2),
   Commercial:Math.max(5.5,b.impactScore-(signalLabel(b).includes('Discovered')?2.2:.7)),
@@ -60,7 +85,7 @@ function list(items){return `<ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul>`
 function openDossier(id){
  const b=briefs.find(x=>x.id===id),scores=scoring(b);activeBrief=b;
  $('#dossierDialog').style.setProperty('--dossier-accent',b.accent);
- $('#dossierContent').innerHTML=`<article class="dossier"><p class="dossier-kicker">${b.id} · ${b.category} · TECHNOLOGY INTELLIGENCE DOSSIER</p><h1>${b.title}</h1><p class="dossier-sub">${b.subtitle}</p><div class="dossier-pills"><span>${b.displayDate}</span><span>${signalLabel(b)}</span><span>${b.commercialHorizon}</span><span>Overall impact ${b.impactScore.toFixed(1)}/10</span></div><div class="score-grid">${Object.entries(scores).map(([k,v])=>`<article class="score-card"><small>${k.toUpperCase()}</small><strong>${v.toFixed(1)}</strong></article>`).join('')}</div><div class="dossier-grid"><section class="dossier-section full"><h3>WHAT HAPPENED</h3><p>${b.summary}</p></section><section class="dossier-section"><h3>WHY IT MATTERS</h3>${list(b.whyItMatters)}</section><section class="dossier-section"><h3>RANKED BOTTLENECKS</h3>${list(bottleneckNames(b))}</section><section class="dossier-section"><h3>OPPORTUNITY LAYERS</h3>${list(opportunityNames(b))}</section><section class="dossier-section"><h3>WATCH CLOSELY</h3>${list(milestoneNames(b))}</section><section class="dossier-section"><h3>RELATED TECHNOLOGIES</h3>${list(b.relatedTechnologies)}</section><section class="dossier-section"><h3>ECOSYSTEM / PLAYERS</h3>${list(b.ecosystemPlayers.map(player=>player.name))}</section><section class="dossier-section full"><h3>UNLOCK SEQUENCE</h3><p class="chain">${unlockNames(b).join(' → ')}</p></section><section class="dossier-section full"><h3>STRATEGIC TAKEAWAY</h3><p>${b.strategicTakeaway}</p></section></div></article>`;
+ $('#dossierContent').innerHTML=`<article class="dossier"><p class="dossier-kicker">${b.id} · ${b.category} · TECHNOLOGY INTELLIGENCE DOSSIER</p><h1>${b.title}</h1><p class="dossier-sub">${b.subtitle}</p><div class="dossier-pills"><span>${b.displayDate}</span><span>${signalLabel(b)}</span><span>${b.commercialHorizon}</span><span>Overall impact ${b.impactScore.toFixed(1)}/10</span></div><div class="score-grid">${Object.entries(scores).map(([k,v])=>`<article class="score-card"><small>${k.toUpperCase()}</small><strong>${v.toFixed(1)}</strong></article>`).join('')}</div><div class="dossier-grid"><section class="dossier-section full"><h3>WHAT HAPPENED</h3><p>${b.summary}</p></section><section class="dossier-section"><h3>WHY IT MATTERS</h3>${list(b.whyItMatters)}</section><section class="dossier-section"><h3>RANKED BOTTLENECKS</h3>${list(bottleneckNames(b))}</section><section class="dossier-section"><h3>OPPORTUNITY LAYERS</h3>${list(opportunityNames(b))}</section><section class="dossier-section"><h3>WATCH CLOSELY</h3>${list(milestoneNames(b))}</section><section class="dossier-section"><h3>RELATED TECHNOLOGIES</h3>${list(b.relatedTechnologies)}</section><section class="dossier-section"><h3>ECOSYSTEM / PLAYERS</h3>${list(b.ecosystemPlayers.map(player=>player.name))}</section><section class="dossier-section full"><h3>UNLOCK SEQUENCE</h3><p class="chain">${unlockNames(b).join(' → ')}</p></section><section class="dossier-section full"><h3>STRATEGIC TAKEAWAY</h3><p>${b.strategicTakeaway}</p></section>${renderSourcesAndEvidence(b)}</div></article>`;
  $('#dossierDialog').showModal();
 }
 $('#closeDialog').onclick=()=>$('#dossierDialog').close();
