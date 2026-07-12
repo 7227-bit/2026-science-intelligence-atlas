@@ -1478,5 +1478,449 @@ window.ATLAS_BRIEFS = [
     "lastReviewed": null,
     "revisionHistory": [],
     "accent": "#e26f86"
+  },
+  {
+    "id": "SP-004",
+    "title": "GJ 887 d",
+    "subtitle": "A confirmed nearby super-Earth in the habitable zone",
+    "eventDate": "2026-02-09",
+    "displayDate": "February 9, 2026",
+    "category": "Space",
+    "signalStatus": "Confirmed",
+    "legacySignalLabel": null,
+    "impactScore": 8.8,
+    "impactRationale": "GJ 887 d is a confirmed habitable-zone super-Earth around one of the Sun's nearest stellar neighbors, making it an unusually important target for future characterization. Its scientific value is high, but its non-transiting geometry and unknown atmosphere and composition limit near-term conclusions about habitability.",
+    "commercialHorizon": "10–25+ years",
+    "commercialHorizonAssumptions": [
+      "Future direct-imaging or high-dispersion spectroscopy systems achieve sufficient contrast and sensitivity.",
+      "The planet retains an atmosphere that can be detected remotely.",
+      "Precision radial-velocity monitoring continues to separate planetary signals from stellar activity."
+    ],
+    "summary": "A 2026 reanalysis using 101 new HARPS and 12 new ESPRESSO radial-velocity measurements confirmed a four-planet model for GJ 887. The analysis confirmed GJ 887 d as a super-Earth with a 50.77-day orbit in the star's habitable zone. The paper identifies it as the second-closest known habitable-zone planet after Proxima Centauri b.",
+    "whyItMatters": [
+      "Its proximity makes it a high-priority target for future atmospheric and direct-imaging studies.",
+      "The result demonstrates the value of long-baseline, sub-meter-per-second radial-velocity measurements.",
+      "The system provides a nearby laboratory for studying compact multi-planet architectures around red dwarfs.",
+      "A confirmed habitable-zone orbit narrows the search space, but does not by itself establish habitability."
+    ],
+    "bottlenecks": [
+      {
+        "rank": 1,
+        "name": "Atmospheric characterization without transits",
+        "constraintType": "Observational",
+        "rationale": "Because the planet does not transit its star, transmission spectroscopy cannot provide the straightforward atmospheric access available for transiting planets."
+      },
+      {
+        "rank": 2,
+        "name": "Unknown radius and bulk composition",
+        "constraintType": "Scientific",
+        "rationale": "Radial velocity provides a minimum mass but not a measured radius, leaving the planet's density and whether it is rocky, water-rich, or gas-enveloped unresolved."
+      },
+      {
+        "rank": 3,
+        "name": "Stellar-activity separation",
+        "constraintType": "Measurement",
+        "rationale": "Signals near red-dwarf rotation and activity timescales can imitate or distort planetary radial-velocity signatures, requiring continued monitoring and careful statistical modeling."
+      },
+      {
+        "rank": 4,
+        "name": "Habitable-zone ambiguity",
+        "constraintType": "Scientific",
+        "rationale": "Orbital location alone does not determine surface conditions; atmospheric pressure, composition, stellar radiation, and climate feedbacks remain unknown."
+      }
+    ],
+    "opportunityLayers": [
+      {
+        "name": "Extreme-precision radial-velocity instruments",
+        "description": "Higher cadence and lower-noise Doppler measurements can refine the planet's orbit, minimum mass, and interactions with the rest of the system.",
+        "classification": "Evidence"
+      },
+      {
+        "name": "Direct-imaging and starlight-suppression systems",
+        "description": "Future coronagraphs, starshades, adaptive optics, and large-aperture observatories may enable reflected-light or thermal characterization of nearby non-transiting planets.",
+        "classification": "Forecast"
+      },
+      {
+        "name": "High-resolution spectroscopy and retrieval software",
+        "description": "Improved spectral extraction and atmospheric-retrieval methods could help detect or constrain atmospheric molecules if the planet becomes observable.",
+        "classification": "Forecast"
+      },
+      {
+        "name": "Stellar-activity modeling",
+        "description": "Gaussian-process and related activity models are enabling tools for distinguishing small planetary signals from the variability of red-dwarf host stars.",
+        "classification": "Evidence"
+      }
+    ],
+    "relatedTechnologies": [
+      "Extreme-precision radial velocity",
+      "Coronagraphy",
+      "Starshades",
+      "Adaptive optics",
+      "High-dispersion spectroscopy",
+      "Atmospheric retrieval",
+      "Gaussian-process stellar modeling"
+    ],
+    "ecosystemPlayers": [
+      {
+        "name": "RedDots collaboration",
+        "role": "Research collaboration",
+        "relevance": "Led the 2026 radial-velocity reanalysis that confirmed the four-planet model."
+      },
+      {
+        "name": "HARPS",
+        "role": "Precision radial-velocity instrument",
+        "relevance": "Provided 101 new radial-velocity measurements used in the confirmation analysis."
+      },
+      {
+        "name": "ESPRESSO",
+        "role": "Extreme-precision radial-velocity instrument",
+        "relevance": "Provided 12 new radial-velocity measurements used in the confirmation analysis."
+      }
+    ],
+    "unlockSequence": [
+      {
+        "order": 1,
+        "step": "Refine the orbital and mass solution",
+        "dependency": "Continued precision radial-velocity observations",
+        "completionCriteria": "Independent analyses recover a stable orbital solution with reduced uncertainties."
+      },
+      {
+        "order": 2,
+        "step": "Constrain radius or composition indirectly",
+        "dependency": "Astrometric, dynamical, or direct-observation constraints",
+        "completionCriteria": "The true mass, radius, or composition class is meaningfully narrowed."
+      },
+      {
+        "order": 3,
+        "step": "Detect or constrain an atmosphere",
+        "dependency": "Next-generation direct imaging or high-resolution spectroscopy",
+        "completionCriteria": "A repeatable atmospheric signal or a strong upper limit is obtained."
+      },
+      {
+        "order": 4,
+        "step": "Assess climate and habitability",
+        "dependency": "Atmospheric composition plus stellar-environment constraints",
+        "completionCriteria": "Climate models can be tested against measured atmospheric properties."
+      }
+    ],
+    "milestones": [
+      {
+        "milestone": "Independent confirmation and orbital refinement",
+        "validationCriteria": "Additional radial-velocity datasets reproduce the 50.77-day signal and reduce parameter uncertainty.",
+        "targetDate": null
+      },
+      {
+        "milestone": "Direct-imaging feasibility assessment",
+        "validationCriteria": "Instrument studies demonstrate adequate angular separation, contrast, and signal-to-noise for characterization.",
+        "targetDate": null
+      },
+      {
+        "milestone": "Atmospheric detection or upper limit",
+        "validationCriteria": "Repeatable spectral evidence constrains atmospheric composition or rules out broad atmosphere classes.",
+        "targetDate": null
+      }
+    ],
+    "strategicTakeaway": "GJ 887 d matters less as proof of another Earth than as a nearby, confirmed target that can push the next generation of precision radial velocity, direct imaging, and atmospheric spectroscopy. The governing constraint is not finding the planet; it is learning what the planet actually is.",
+    "sources": [
+      {
+        "id": "SP-004-S1",
+        "title": "RedDots: Multiplanet system around M dwarf GJ 887 in the solar neighborhood",
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2602.08929",
+        "publicationDate": "2026-02-09",
+        "accessedDate": "2026-07-12",
+        "sourceType": "Preprint / primary research",
+        "supports": [
+          "summary",
+          "whyItMatters",
+          "bottlenecks",
+          "ecosystemPlayers",
+          "milestones"
+        ]
+      },
+      {
+        "id": "SP-004-S2",
+        "title": "A multiple planet system of super-Earths orbiting the brightest red dwarf star GJ887",
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2006.16372",
+        "publicationDate": "2020-06-29",
+        "accessedDate": "2026-07-12",
+        "sourceType": "Preprint / primary research",
+        "supports": [
+          "system context",
+          "stellar environment",
+          "historical candidate status"
+        ]
+      }
+    ],
+    "evidenceClassification": [
+      {
+        "section": "summary",
+        "classification": "Evidence",
+        "statement": "The 2026 Bayesian radial-velocity analysis confirmed a four-planet model including a 50.77-day super-Earth in the habitable zone.",
+        "sourceIds": [
+          "SP-004-S1"
+        ],
+        "basis": "Directly reported by the primary research paper."
+      },
+      {
+        "section": "whyItMatters",
+        "classification": "Inference",
+        "statement": "The planet is a priority target for future characterization because it is both nearby and in the habitable zone.",
+        "sourceIds": [
+          "SP-004-S1",
+          "SP-004-S2"
+        ],
+        "basis": "Strategic interpretation of the planet's proximity, orbital location, and observational accessibility."
+      },
+      {
+        "section": "opportunityLayers",
+        "classification": "Forecast",
+        "statement": "Future direct-imaging, starlight-suppression, and high-resolution spectroscopy systems may enable atmospheric characterization.",
+        "sourceIds": [
+          "SP-004-S1"
+        ],
+        "basis": "Forward-looking instrumentation pathway; capability and timing remain uncertain."
+      },
+      {
+        "section": "strategicTakeaway",
+        "classification": "Inference",
+        "statement": "The key constraint has shifted from detection to physical characterization.",
+        "sourceIds": [
+          "SP-004-S1"
+        ],
+        "basis": "Synthesis of what is confirmed versus what remains unknown."
+      }
+    ],
+    "lastReviewed": "2026-07-12",
+    "revisionHistory": [
+      {
+        "date": "2026-07-12",
+        "summary": "Created as a primary-source-based draft for Content Pack 1.",
+        "reviewedBy": "AI-assisted source extraction; human editorial review pending"
+      }
+    ],
+    "accent": "#62b8ff"
+  },
+  {
+    "id": "SP-005",
+    "title": "Gaia-GIC-1",
+    "subtitle": "A rare candidate aftermath of a catastrophic planetary collision",
+    "eventDate": "2026-03-11",
+    "displayDate": "March 11, 2026",
+    "category": "Space",
+    "signalStatus": "Preliminary",
+    "legacySignalLabel": "Planetary-collision candidate",
+    "impactScore": 7.9,
+    "impactRationale": "Gaia-GIC-1 may offer a rare, evolving view of debris from a giant impact during planet formation. Its scientific value is substantial because such events are difficult to observe in real time, but the collision interpretation remains a hypothesis and the system is distant, faint, and challenging to characterize.",
+    "commercialHorizon": "Not established",
+    "commercialHorizonAssumptions": [],
+    "summary": "Researchers reported Gaia20ehk, renamed Gaia-GIC-1, as an optical dipper and infrared transient surrounded by hot, newly generated dust. The system shows a 380.5-day modulation, prolonged infrared brightening, irregular optical dimming, dust near 900 kelvin, and a minimum estimated dust mass of 4 × 10^20 kilograms. The authors hypothesize that the debris was produced by a recent collision between large planetary bodies.",
+    "whyItMatters": [
+      "It may provide a rare time-resolved view of a giant impact during terrestrial-planet formation.",
+      "The combination of optical dimming and infrared brightening allows debris evolution to be studied across wavelengths.",
+      "The case demonstrates how time-domain surveys can discover transient stages of planetary-system evolution.",
+      "Because the collision interpretation is not yet confirmed, the system is also a valuable test of how competing explanations are separated observationally."
+    ],
+    "bottlenecks": [
+      {
+        "rank": 1,
+        "name": "Collision interpretation remains unconfirmed",
+        "constraintType": "Scientific",
+        "rationale": "The observed dust and variability are consistent with a giant impact, but the authors describe the collision as a hypothesis rather than a directly observed event."
+      },
+      {
+        "rank": 2,
+        "name": "Sparse and uneven time-domain coverage",
+        "constraintType": "Observational",
+        "rationale": "Long gaps and differing survey cadences make it difficult to reconstruct the debris cloud's formation and evolution."
+      },
+      {
+        "rank": 3,
+        "name": "Weak spectroscopic constraints",
+        "constraintType": "Measurement",
+        "rationale": "Existing optical spectra have low signal-to-noise and have not revealed prominent features that identify the star or occulting material more precisely."
+      },
+      {
+        "rank": 4,
+        "name": "Infrared crowding and wavelength coverage",
+        "constraintType": "Instrumentation",
+        "rationale": "The source is faint and close to a neighboring star, while longer-wavelength observations needed to constrain grain properties and total dust mass remain limited."
+      }
+    ],
+    "opportunityLayers": [
+      {
+        "name": "Time-domain survey infrastructure",
+        "description": "High-cadence optical and infrared surveys can identify and monitor transient debris events that would be missed by single-epoch observations.",
+        "classification": "Evidence"
+      },
+      {
+        "name": "Multiwavelength follow-up networks",
+        "description": "Coordinated optical, near-infrared, mid-infrared, and spectroscopic observations are needed to distinguish impact debris from alternative explanations.",
+        "classification": "Inference"
+      },
+      {
+        "name": "Infrared instrumentation and data processing",
+        "description": "Improved spatial resolution, longer-wavelength coverage, and source-deblending methods can better constrain dust temperature, composition, and mass.",
+        "classification": "Inference"
+      },
+      {
+        "name": "Transient classification and simulation tools",
+        "description": "Machine-learning-assisted screening and accelerated impact simulations may help connect observed light curves to plausible collision conditions.",
+        "classification": "Forecast"
+      }
+    ],
+    "relatedTechnologies": [
+      "Gaia photometric alerts",
+      "WISE and NEOWISE infrared monitoring",
+      "SPHEREx spectrophotometry",
+      "Time-domain astronomy",
+      "Debris-disk modeling",
+      "Giant-impact simulation",
+      "Source deblending"
+    ],
+    "ecosystemPlayers": [
+      {
+        "name": "Gaia Photometric Science Alerts",
+        "role": "Transient discovery and optical monitoring",
+        "relevance": "First identified Gaia20ehk and provided the long-term Gaia G-band light curve."
+      },
+      {
+        "name": "WISE / NEOWISE",
+        "role": "Infrared monitoring",
+        "relevance": "Provided the infrared photometry used to measure the brightening and estimate dust temperature."
+      },
+      {
+        "name": "SPHEREx",
+        "role": "Near-infrared spectrophotometric follow-up",
+        "relevance": "Recent observations confirmed that the system remained infrared bright."
+      },
+      {
+        "name": "SOAR and SALT",
+        "role": "Optical spectroscopic follow-up",
+        "relevance": "Provided spectra that currently yield only limited constraints because of low signal-to-noise."
+      }
+    ],
+    "unlockSequence": [
+      {
+        "order": 1,
+        "step": "Maintain high-cadence optical and infrared monitoring",
+        "dependency": "Continued access to time-domain surveys and follow-up facilities",
+        "completionCriteria": "The evolution, periodicity, and dispersal of the debris are tracked across multiple observing seasons."
+      },
+      {
+        "order": 2,
+        "step": "Improve spectral and spatial constraints",
+        "dependency": "Higher-sensitivity spectroscopy and less-confused infrared observations",
+        "completionCriteria": "The stellar properties and dust features are measured with substantially improved signal-to-noise."
+      },
+      {
+        "order": 3,
+        "step": "Constrain dust composition and size distribution",
+        "dependency": "Broader wavelength coverage and physically consistent debris models",
+        "completionCriteria": "Multiple datasets converge on a bounded range of grain properties and dust mass."
+      },
+      {
+        "order": 4,
+        "step": "Discriminate among origin scenarios",
+        "dependency": "Combined light-curve, spectroscopic, and debris-model evidence",
+        "completionCriteria": "A giant impact is favored over alternative explanations with quantified confidence."
+      },
+      {
+        "order": 5,
+        "step": "Use the event to test terrestrial-planet formation models",
+        "dependency": "A constrained impact history and debris evolution",
+        "completionCriteria": "Observed evolution is compared quantitatively with giant-impact and collisional-cascade simulations."
+      }
+    ],
+    "milestones": [
+      {
+        "milestone": "Continued optical and infrared monitoring",
+        "validationCriteria": "New observations establish whether the dust cloud disperses, shears, repeats, or changes temperature.",
+        "targetDate": null
+      },
+      {
+        "milestone": "Higher-signal-to-noise spectroscopy",
+        "validationCriteria": "Spectral features constrain the host star and/or occulting material beyond current upper limits.",
+        "targetDate": null
+      },
+      {
+        "milestone": "Longer-wavelength debris measurements",
+        "validationCriteria": "Far-infrared or submillimeter data materially narrow grain-size and total-mass estimates.",
+        "targetDate": null
+      },
+      {
+        "milestone": "Quantified model comparison",
+        "validationCriteria": "The collision scenario is tested against viable alternatives using a reproducible statistical framework.",
+        "targetDate": null
+      }
+    ],
+    "strategicTakeaway": "Gaia-GIC-1 is important because it may let astronomers watch the aftermath of planet formation rather than infer it from a finished system. The governing constraint is confirmation: the dust is real, but the claim that a catastrophic planetary collision produced it remains a carefully framed hypothesis.",
+    "sources": [
+      {
+        "id": "SP-005-S1",
+        "title": "Gaia-GIC-1: An Evolving Catastrophic Planetesimal Collision Candidate",
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2603.10952",
+        "publicationDate": "2026-03-11",
+        "accessedDate": "2026-07-12",
+        "sourceType": "Preprint / primary research",
+        "supports": [
+          "summary",
+          "whyItMatters",
+          "bottlenecks",
+          "ecosystemPlayers",
+          "unlockSequence",
+          "milestones"
+        ]
+      }
+    ],
+    "evidenceClassification": [
+      {
+        "section": "summary.observations",
+        "classification": "Evidence",
+        "statement": "The source shows high-amplitude optical variability, prolonged infrared brightening, approximately 900 K dust, and a minimum estimated dust mass of 4 × 10^20 kg.",
+        "sourceIds": [
+          "SP-005-S1"
+        ],
+        "basis": "Directly reported measurements and derived quantities in the primary paper."
+      },
+      {
+        "section": "summary.collisionOrigin",
+        "classification": "Inference",
+        "statement": "The debris was produced by a recent collision between large planetary bodies.",
+        "sourceIds": [
+          "SP-005-S1"
+        ],
+        "basis": "The paper presents this as its favored hypothesis, not a directly confirmed event."
+      },
+      {
+        "section": "opportunityLayers",
+        "classification": "Forecast",
+        "statement": "Improved time-domain surveys, infrared instrumentation, and simulation tools will make similar events easier to discover and interpret.",
+        "sourceIds": [
+          "SP-005-S1"
+        ],
+        "basis": "Forward-looking interpretation of the observational constraints described by the authors."
+      },
+      {
+        "section": "strategicTakeaway",
+        "classification": "Inference",
+        "statement": "The system's greatest value is as a potential real-time test of terrestrial-planet formation.",
+        "sourceIds": [
+          "SP-005-S1"
+        ],
+        "basis": "Synthesis of the event's rarity, evolving debris, and unresolved origin."
+      }
+    ],
+    "lastReviewed": "2026-07-12",
+    "revisionHistory": [
+      {
+        "date": "2026-07-12",
+        "summary": "Created as a primary-source-based draft for Content Pack 1.",
+        "reviewedBy": "AI-assisted source extraction; human editorial review pending"
+      }
+    ],
+    "accent": "#62b8ff"
   }
 ];
