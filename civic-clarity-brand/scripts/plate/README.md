@@ -33,3 +33,17 @@ All coordinates are in reference-band units: a 1536 × 446 crop of the reference
 - **Reconstructed areas are synthesised, not recovered.** That covers everything under the removed lettering and arc, the facade below the roofline, the continued flag stripes and the 16:9 extensions. The final title covers most of them.
 - **ESRGAN detail is model-generated.** The upscale sharpens and invents fine texture consistent with the source. It is concept artwork, not documentary evidence, and must never be presented as a photograph of the real building.
 - **Rights.** The plates inherit the reference's rights status: owner-asserted and unverified. See `ASSET_PROVENANCE.csv`.
+
+## V3 (Visual Fidelity Correction)
+
+`export_v3.py` builds the V3 plates. Its inputs:
+- an ESRGAN ×4 of the **untouched** reference band (`node scripts/plate/upscale.mjs v3/ref_band.png v3/ref_band_x4.png thick 128`);
+- the V2 ×4 clean and sky plates.
+
+Steps:
+1. Every plate gets a low-frequency tone correction toward its source, which restores thin glows the upscaler dims. The thin-light regions get a finer correction.
+2. The canvas is 1536 × 864 reference-px: 290 above, 446 band, 128 below.
+3. The top extension is mirrored sky rows, with real cloud texture borrowed horizontally over the removed dome area. The borrowed texture fades out near the seam, and the sky softens and deepens toward the top edge.
+4. The bottom extension comes from the lettering-free plate, so the title is never mirrored.
+5. Seams only touch the extensions. The reference rows are restored exactly.
+6. The reveal masks (letters with IDs, glow line, descriptor, rules, star, arc, facade) are derived from the reference itself. The facade mask excludes a wide zone around every element, so nothing appears early.

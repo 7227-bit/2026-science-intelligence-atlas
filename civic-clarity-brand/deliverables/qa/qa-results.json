@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T03:17:34.989Z",
+  "generated": "2026-11-12T04:14:54.588Z",
   "results": [
     {
       "name": "Ident resolution 3840x2160",
@@ -96,6 +96,59 @@
       "name": "V2 title inside 90% title-safe at final frame",
       "pass": true,
       "detail": "design x 124..1792 (safe 96..1824)"
+    },
+    {
+      "name": "V3 master 3840x2160 @ exactly 24 fps, 108 frames, 4.500 s",
+      "pass": true,
+      "detail": "3840x2160 24/1 108f 4.500000s yuv420p bt709"
+    },
+    {
+      "name": "V3 audio cue preserved (decoded PCM byte-identical to V1)",
+      "pass": true
+    },
+    {
+      "name": "V3 silent version has no audio stream",
+      "pass": true
+    },
+    {
+      "name": "V3 shows the full reference width (no crop) at uniform scale",
+      "pass": true,
+      "detail": "scale 2.5, x0 0, match 0.997"
+    },
+    {
+      "name": "V3 below-band space reduced (< 16% of frame)",
+      "pass": true,
+      "detail": "14.8% (V2: 25.5%)"
+    },
+    {
+      "name": "V3 wordmark bbox within 2 px of reference",
+      "pass": true,
+      "detail": "173,205,1332,346 vs 173,205,1332,346"
+    },
+    {
+      "name": "V3 descriptor bbox within 2 px of reference",
+      "pass": true,
+      "detail": "386,379,1173,405"
+    },
+    {
+      "name": "V3 star centre within 1 px, size equal",
+      "pass": true,
+      "detail": "{\"cx\":768.2,\"cy\":418.2,\"w\":95,\"h\":47}"
+    },
+    {
+      "name": "V3 halo arc within 2 px (centre and radius)",
+      "pass": true,
+      "detail": "{\"cx\":765.7,\"cy\":383.2,\"r\":370.5,\"points\":66}"
+    },
+    {
+      "name": "V3 wordmark material matches (L* mean/p10/p90 within 1.5, a*/b* within 1)",
+      "pass": true,
+      "detail": "L 75.9/44.3/97.3 a 4.9 b 15.3 (ref 76.1/43.9/98 4.9 15.4)"
+    },
+    {
+      "name": "V3 band SSIM >= 0.95 vs reference",
+      "pass": true,
+      "detail": "whole 0.961, title 0.952"
     },
     {
       "name": "civic-clarity_avatar_1024.png is 1024x1024",

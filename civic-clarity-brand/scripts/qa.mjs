@@ -81,6 +81,37 @@ if (exists(V2)) {
   check('V2 title inside 90% title-safe at final frame', dx1 >= 96 && dx2 <= 1824, `design x ${dx1.toFixed(0)}..${dx2.toFixed(0)} (safe 96..1824)`);
 } else check('V2 master exists', false, V2);
 
+/* 1c. V3 ident (Visual Fidelity Correction) */
+const V3P = 'deliverables/ident/v3/civic-clarity-ident-V3_3840x2160_24p_4.5s.mp4';
+if (exists(V3P)) {
+  const j = probe(P(V3P));
+  const v = j.streams.find((s) => s.codec_type === 'video');
+  check('V3 master 3840x2160 @ exactly 24 fps, 108 frames, 4.500 s', v.width === 3840 && v.height === 2160 && v.r_frame_rate === '24/1' && v.avg_frame_rate === '24/1' && Number(v.nb_frames) === 108, `${v.width}x${v.height} ${v.r_frame_rate} ${v.nb_frames}f ${v.duration}s ${v.pix_fmt} ${v.color_space}`);
+  if (exists(IDENT)) {
+    const pcm = (f) => execFileSync('ffmpeg', ['-loglevel', 'error', '-i', P(f), '-vn', '-map', '0:a', '-f', 's16le', '-'], {maxBuffer: 64 * 1024 * 1024});
+    check('V3 audio cue preserved (decoded PCM byte-identical to V1)', pcm(V3P).equals(pcm(IDENT)));
+  }
+  const S3 = 'deliverables/ident/v3/civic-clarity-ident-V3_3840x2160_24p_4.5s_SILENT.mp4';
+  if (exists(S3)) check('V3 silent version has no audio stream', !probe(P(S3)).streams.some((s) => s.codec_type === 'audio'));
+  const MJ = 'deliverables/fidelity/measure_V3/measurements.json';
+  if (exists(MJ)) {
+    const m = JSON.parse(fs.readFileSync(P(MJ), 'utf8'));
+    const bp = m.band_placement_in_frame;
+    check('V3 shows the full reference width (no crop) at uniform scale', bp.band_width_pct_of_frame === 100 && Math.abs(bp.x0) < 1, `scale ${bp.scale}, x0 ${bp.x0}, match ${bp.match_score}`);
+    check('V3 below-band space reduced (< 16% of frame)', bp.below_band_pct_of_frame < 16, `${bp.below_band_pct_of_frame}% (V2: 25.5%)`);
+    const wb = (o) => o.wordmark_bbox;
+    const dmax = (a, b) => Math.max(...a.map((x, i) => Math.abs(x - b[i])));
+    check('V3 wordmark bbox within 2 px of reference', dmax(wb(m.reference), wb(m.candidate)) <= 2, `${wb(m.candidate)} vs ${wb(m.reference)}`);
+    check('V3 descriptor bbox within 2 px of reference', dmax(m.reference.descriptor_bbox, m.candidate.descriptor_bbox) <= 2, `${m.candidate.descriptor_bbox}`);
+    check('V3 star centre within 1 px, size equal', Math.hypot(m.reference.star.cx - m.candidate.star.cx, m.reference.star.cy - m.candidate.star.cy) <= 1 && m.reference.star.w === m.candidate.star.w, JSON.stringify(m.candidate.star));
+    const ar = m.reference.arc, ac = m.candidate.arc;
+    check('V3 halo arc within 2 px (centre and radius)', Math.abs(ar.cx - ac.cx) <= 2 && Math.abs(ar.cy - ac.cy) <= 2 && Math.abs(ar.r - ac.r) <= 2, JSON.stringify(ac));
+    const lr = m.reference.letter_material, lc = m.candidate.letter_material;
+    check('V3 wordmark material matches (L* mean/p10/p90 within 1.5, a*/b* within 1)', Math.abs(lr.L_mean - lc.L_mean) <= 1.5 && Math.abs(lr.L_p10 - lc.L_p10) <= 1.5 && Math.abs(lr.L_p90 - lc.L_p90) <= 1.5 && Math.abs(lr.a_mean - lc.a_mean) <= 1 && Math.abs(lr.b_mean - lc.b_mean) <= 1, `L ${lc.L_mean}/${lc.L_p10}/${lc.L_p90} a ${lc.a_mean} b ${lc.b_mean} (ref ${lr.L_mean}/${lr.L_p10}/${lr.L_p90} ${lr.a_mean} ${lr.b_mean})`);
+    check('V3 band SSIM >= 0.95 vs reference', m.pixel_similarity.whole_band.ssim >= 0.95, `whole ${m.pixel_similarity.whole_band.ssim}, title ${m.pixel_similarity.title.ssim}`);
+  } else check('V3 fidelity measurements exist', false, MJ);
+} else check('V3 master exists', false, V3P);
+
 /* 2. PNG dimensions */
 const pngSize = (f) => {
   const b = fs.readFileSync(P(f));

@@ -12,6 +12,23 @@ This is a self-contained Remotion + React + TypeScript project. It builds:
 
 They all share one token file, `src/brand/tokens.json`.
 
+## Visual Fidelity Correction — Cinematic Ident V3 (candidate)
+
+V3 replaces V2's interpretation with a match to the owner's reference. V1 and V2 are unchanged.
+- The final frame is the reference composition at full width, with its own lettering, light, rules, star and arc (ESRGAN ×4, tone-corrected to the original).
+- It is extended to 16:9 with sky above and ground below.
+- Each element is revealed by the animation through masks derived from the reference.
+
+The static final frame was measured against the reference **before** animating. See `FIDELITY_REPORT_V3.md`.
+
+| | |
+|---|---|
+| Composition | `CivicClarityIdentV3` (`src/compositions/CivicClarityIdentV3.tsx`, `src/v3/PlateGLV3.tsx`) |
+| Render | `npm run render:identv3` → `deliverables/ident/v3/` |
+| Plates | `public/plates/v3/` (built by `scripts/plate/export_v3.py` from the ESRGAN outputs) |
+| Fidelity measurement | `npm run fidelity` (`scripts/fidelity/measure.py`) → `deliverables/fidelity/measure_V3/` |
+| Review | `OWNER_REVIEW_V3.md`, `FIDELITY_REPORT_V3.md` |
+
 ## Revision Round 2 — Cinematic Ident V2 (candidate)
 
 After the owner's Round 2 direction, V2 was added **alongside** V1 (V1 is unchanged). V2 is built from the owner-selected reference artwork:
