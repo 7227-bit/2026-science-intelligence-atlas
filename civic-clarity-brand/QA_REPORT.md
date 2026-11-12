@@ -21,7 +21,7 @@ All values measured with ffprobe.
 | `civic-clarity-ident_3840x2160_24p_4.5s.mp4` | H.264 High, **3840×2160**, **24/1 fps**, **108 frames = 4.500 s**, yuv420p, BT.709 limited (tv) range; AAC-LC 48 kHz **stereo** 320 kb/s; 12.3 MB |
 | `…_SILENT.mp4` | Same video stream (stream-copied), **no audio stream** |
 | `civic-clarity-ident-title_ALPHA_3840x2160_24p.webm` | VP9 3840×2160 24 fps, **alpha_mode=1**. Decoded frame 90 is RGBA with alpha 0–255 and 87.6% fully transparent pixels. Proof: `qa/alpha_overlay_frame90_on_grey.png`. |
-| ProRes 422 HQ / ProRes 4444 mezzanine | See §8 |
+| ProRes 422 HQ / ProRes 4444 mezzanine | Rendered and probed — see §8 |
 
 ## 3. Audio
 
@@ -73,7 +73,11 @@ WCAG contrast is measured for all token text pairs; see BRAND_SPEC §1. Every te
 ## 8. Mezzanine
 
 `npm run render:mezzanine` → `out/mezzanine/`. Not committed, because of file size.
-MEZZANINE_RESULT_PLACEHOLDER
+
+| File | Measured |
+|---|---|
+| `civic-clarity-ident_3840x2160_24p_ProRes422HQ.mov` | ProRes 422 HQ, 3840×2160, yuv422p10le, 24 fps, 108 frames, 4.500 s, PCM 48 kHz audio — 285 MB |
+| `civic-clarity-ident-title_ALPHA_3840x2160_24p_ProRes4444.mov` | ProRes 4444, 3840×2160, **yuva444p12le (alpha)**, 24 fps, 108 frames, 4.500 s — 176 MB |
 
 ## Unresolved / requires owner or human action
 
