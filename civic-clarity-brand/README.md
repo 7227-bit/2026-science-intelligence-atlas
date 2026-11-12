@@ -12,6 +12,10 @@ This is a self-contained Remotion + React + TypeScript project. It builds:
 
 They all share one token file, `src/brand/tokens.json`.
 
+## Targeted Final Revisions — Cinematic Ident V4 (candidate; V3 kept as backup)
+
+V4 = V3 with two changes. The subtitle reads **INVESTIGATING LEGISLATION**, in the same style, tracking, rules and star. The 16:9 extensions are original generated sky and ground, with no mirrored or repeated imagery anywhere. Composition: `CivicClarityIdentV4` (plates in `public/plates/v4/`, built by `scripts/plate/export_v4.py`). Render: `npm run render:identv4`. Audit: `scripts/fidelity/mirror_check.py`. Review: `OWNER_REVIEW_V4.md`.
+
 ## Visual Fidelity Correction — Cinematic Ident V3 (candidate)
 
 V3 replaces V2's interpretation with a match to the owner's reference. V1 and V2 are unchanged.

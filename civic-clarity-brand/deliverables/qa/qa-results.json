@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T04:14:54.588Z",
+  "generated": "2026-11-12T13:53:00.099Z",
   "results": [
     {
       "name": "Ident resolution 3840x2160",
@@ -149,6 +149,47 @@
       "name": "V3 band SSIM >= 0.95 vs reference",
       "pass": true,
       "detail": "whole 0.961, title 0.952"
+    },
+    {
+      "name": "V4 master 3840x2160 @ exactly 24 fps, 108 frames, 4.500 s",
+      "pass": true,
+      "detail": "3840x2160 24/1 108f 4.500000s"
+    },
+    {
+      "name": "V4 audio cue preserved (decoded PCM byte-identical)",
+      "pass": true
+    },
+    {
+      "name": "V4 silent version has no audio stream",
+      "pass": true
+    },
+    {
+      "name": "V3 backup preserved",
+      "pass": true
+    },
+    {
+      "name": "V4 final hold: zero copied/reflected patches involving the extensions",
+      "pass": true,
+      "detail": "final frame 0"
+    },
+    {
+      "name": "V4 whole animation: copied/reflected extension patches reduced >= 95% vs V3",
+      "pass": true,
+      "detail": "4 vs 154 over 13 frames"
+    },
+    {
+      "name": "V4 wordmark bbox unchanged vs reference (<= 2 px)",
+      "pass": true,
+      "detail": "173,205,1332,346"
+    },
+    {
+      "name": "V4 title SSIM vs reference >= 0.95 (title preserved)",
+      "pass": true,
+      "detail": "0.952"
+    },
+    {
+      "name": "V4 subtitle reads INVESTIGATING LEGISLATION",
+      "pass": true
     },
     {
       "name": "civic-clarity_avatar_1024.png is 1024x1024",

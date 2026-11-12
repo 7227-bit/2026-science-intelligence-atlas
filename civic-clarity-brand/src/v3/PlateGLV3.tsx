@@ -143,16 +143,16 @@ void main(){
   o = vec4(clamp(col,0.0,1.0), 1.0);
 }`;
 
-const FILES: Array<[string, string, boolean]> = [
-  ['uClean', 'plates/v3/plate_clean.jpg', false],
-  ['uSky', 'plates/v3/plate_sky.jpg', false],
-  ['uRef', 'plates/v3/plate_ref.jpg', false],
-  ['uCap', 'plates/v3/matte_capitol.png', false],
-  ['uFlag', 'plates/v3/mask_flag.png', false],
-  ['uRevA', 'plates/v3/reveal_a.png', false],
-  ['uRevB', 'plates/v3/reveal_b.png', false],
-  ['uRevC', 'plates/v3/reveal_rules.png', false],
-  ['uIds', 'plates/v3/letter_ids.png', true],
+const fileList = (dir: string): Array<[string, string, boolean]> => [
+  ['uClean', `${dir}/plate_clean.jpg`, false],
+  ['uSky', `${dir}/plate_sky.jpg`, false],
+  ['uRef', `${dir}/plate_ref.jpg`, false],
+  ['uCap', `${dir}/matte_capitol.png`, false],
+  ['uFlag', `${dir}/mask_flag.png`, false],
+  ['uRevA', `${dir}/reveal_a.png`, false],
+  ['uRevB', `${dir}/reveal_b.png`, false],
+  ['uRevC', `${dir}/reveal_rules.png`, false],
+  ['uIds', `${dir}/letter_ids.png`, true],
 ];
 
 const loadImage = (src: string) =>
@@ -163,7 +163,8 @@ const loadImage = (src: string) =>
     im.src = src;
   });
 
-export const PlateGLV3: React.FC<{u: V3Uniforms; width: number; height: number}> = ({u, width, height}) => {
+export const PlateGLV3: React.FC<{u: V3Uniforms; width: number; height: number; plateDir?: string}> = ({u, width, height, plateDir = 'plates/v3'}) => {
+  const FILES = fileList(plateDir);
   const ref = useRef<HTMLCanvasElement>(null);
   const st = useRef<{gl: WebGL2RenderingContext; loc: Record<string, WebGLUniformLocation | null>} | null>(null);
   const [ready, setReady] = useState(false);
@@ -241,6 +242,7 @@ export const PlateGLV3: React.FC<{u: V3Uniforms; width: number; height: number}>
         continueRender(initHandle);
       })
       .catch((e) => cancelRender(e));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initHandle]);
 
   useEffect(() => {

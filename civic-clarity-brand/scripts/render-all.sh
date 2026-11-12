@@ -34,6 +34,13 @@ identv3() {
   ffmpeg -hide_banner -loglevel error -y -i "$D/ident/v3/civic-clarity-ident-V3_3840x2160_24p_4.5s.mp4" -map 0:v -c copy \
     "$D/ident/v3/civic-clarity-ident-V3_3840x2160_24p_4.5s_SILENT.mp4"
 }
+identv4() {
+  mkdir -p "$D/ident/v4"
+  $R render "$BUNDLE" CivicClarityIdentV4 "$D/ident/v4/civic-clarity-ident-V4_3840x2160_24p_4.5s.mp4" \
+    --gl=swangle --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --log=error
+  ffmpeg -hide_banner -loglevel error -y -i "$D/ident/v4/civic-clarity-ident-V4_3840x2160_24p_4.5s.mp4" -map 0:v -c copy \
+    "$D/ident/v4/civic-clarity-ident-V4_3840x2160_24p_4.5s_SILENT.mp4"
+}
 mezzaninev2() {
   $R render "$BUNDLE" CivicClarityIdentV2 out/mezzanine/civic-clarity-ident-V2_3840x2160_24p_ProRes422HQ.mov \
     --gl=swangle --codec=prores --prores-profile=hq --image-format=png --log=error
@@ -76,6 +83,7 @@ case "${1:-all}" in
   ident) ident ;;
   identv2) identv2 ;;
   identv3) identv3 ;;
+  identv4) identv4 ;;
   mezzaninev2) mezzaninev2 ;;
   alpha) alpha ;;
   mezzanine) mezzanine ;;

@@ -112,6 +112,36 @@ if (exists(V3P)) {
   } else check('V3 fidelity measurements exist', false, MJ);
 } else check('V3 master exists', false, V3P);
 
+/* 1d. V4 ident (Targeted Final Revisions) */
+const V4P = 'deliverables/ident/v4/civic-clarity-ident-V4_3840x2160_24p_4.5s.mp4';
+if (exists(V4P)) {
+  const v = probe(P(V4P)).streams.find((s) => s.codec_type === 'video');
+  check('V4 master 3840x2160 @ exactly 24 fps, 108 frames, 4.500 s', v.width === 3840 && v.height === 2160 && v.r_frame_rate === '24/1' && v.avg_frame_rate === '24/1' && Number(v.nb_frames) === 108, `${v.width}x${v.height} ${v.r_frame_rate} ${v.nb_frames}f ${v.duration}s`);
+  if (exists(IDENT)) {
+    const pcm = (f) => execFileSync('ffmpeg', ['-loglevel', 'error', '-i', P(f), '-vn', '-map', '0:a', '-f', 's16le', '-'], {maxBuffer: 64 * 1024 * 1024});
+    check('V4 audio cue preserved (decoded PCM byte-identical)', pcm(V4P).equals(pcm(IDENT)));
+  }
+  const S4 = 'deliverables/ident/v4/civic-clarity-ident-V4_3840x2160_24p_4.5s_SILENT.mp4';
+  if (exists(S4)) check('V4 silent version has no audio stream', !probe(P(S4)).streams.some((s) => s.codec_type === 'audio'));
+  check('V3 backup preserved', exists('deliverables/ident/v3/civic-clarity-ident-V3_3840x2160_24p_4.5s.mp4') && exists('public/plates/v3/plate_ref.jpg'));
+  const A4 = 'deliverables/qa/v4/mirror-audit_V4.json', A3 = 'deliverables/qa/v4/mirror-audit_V3.json';
+  if (exists(A4) && exists(A3)) {
+    const a4 = JSON.parse(fs.readFileSync(P(A4), 'utf8')), a3 = JSON.parse(fs.readFileSync(P(A3), 'utf8'));
+    const t4 = a4.reduce((s, x) => s + x.extension_copy_hits, 0), t3 = a3.reduce((s, x) => s + x.extension_copy_hits, 0);
+    check('V4 final hold: zero copied/reflected patches involving the extensions', a4[a4.length - 1].extension_copy_hits === 0, `final frame ${a4[a4.length - 1].extension_copy_hits}`);
+    check('V4 whole animation: copied/reflected extension patches reduced >= 95% vs V3', t4 <= 0.05 * t3, `${t4} vs ${t3} over ${a4.length} frames`);
+  } else check('V4 mirror audit exists', false);
+  const MJ4 = 'deliverables/qa/v4/measure_V4/measurements.json';
+  if (exists(MJ4)) {
+    const m = JSON.parse(fs.readFileSync(P(MJ4), 'utf8'));
+    const d = (a, b) => Math.max(...a.map((x, i) => Math.abs(x - b[i])));
+    check('V4 wordmark bbox unchanged vs reference (<= 2 px)', d(m.reference.wordmark_bbox, m.candidate.wordmark_bbox) <= 2, String(m.candidate.wordmark_bbox));
+    check('V4 title SSIM vs reference >= 0.95 (title preserved)', m.pixel_similarity.title.ssim >= 0.95, String(m.pixel_similarity.title.ssim));
+  }
+  const rep = 'deliverables/qa/v4/plate_report.json';
+  if (exists(rep)) check('V4 subtitle reads INVESTIGATING LEGISLATION', JSON.parse(fs.readFileSync(P(rep), 'utf8')).subtitle === 'INVESTIGATING LEGISLATION');
+} else check('V4 master exists', false, V4P);
+
 /* 2. PNG dimensions */
 const pngSize = (f) => {
   const b = fs.readFileSync(P(f));

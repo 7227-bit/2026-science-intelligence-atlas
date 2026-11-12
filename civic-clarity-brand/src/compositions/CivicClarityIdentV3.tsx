@@ -25,7 +25,7 @@ const audioAvailable = (src: string) => {
 const ease = Easing.bezier(0.25, 0.1, 0.25, 1);
 const easeOutSoft = Easing.bezier(0.16, 0.6, 0.3, 1);
 
-export const CivicClarityIdentV3: React.FC<CivicClarityIdentProps> = (props) => {
+export const CivicClarityIdentV3: React.FC<CivicClarityIdentProps & {plateDir?: string}> = ({plateDir, ...props}) => {
   const p = {...identV3Defaults, ...props};
   const frame = useCurrentFrame();
   const {fps, durationInFrames, width, height} = useVideoConfig();
@@ -53,6 +53,7 @@ export const CivicClarityIdentV3: React.FC<CivicClarityIdentProps> = (props) => 
     <AbsoluteFill style={{backgroundColor: '#000'}}>
       <AbsoluteFill style={{opacity: fade}}>
         <PlateGLV3
+          plateDir={plateDir}
           width={width}
           height={height}
           u={{

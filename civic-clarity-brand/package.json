@@ -22,7 +22,8 @@
     "plates": "scripts/plate/build_plates.sh out/plate-work",
     "type:cinematic": "node scripts/build-cinematic-type.mjs",
     "render:identv3": "scripts/render-all.sh identv3",
-    "fidelity": "python3 -I scripts/fidelity/measure.py references/OWNER_SELECTED_REFERENCE.jpeg deliverables/fidelity/V3_static-final-frame_3840x2160_f107_t4.46s.png deliverables/fidelity/measure_V3"
+    "fidelity": "python3 -I scripts/fidelity/measure.py references/OWNER_SELECTED_REFERENCE.jpeg deliverables/fidelity/V3_static-final-frame_3840x2160_f107_t4.46s.png deliverables/fidelity/measure_V3",
+    "render:identv4": "scripts/render-all.sh identv4"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.543",

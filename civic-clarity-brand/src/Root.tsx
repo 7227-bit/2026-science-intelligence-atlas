@@ -13,6 +13,7 @@ import {
 } from './compositions/Cards';
 import {CivicClarityIdentV2, identV2Defaults} from './compositions/CivicClarityIdentV2';
 import {CivicClarityIdentV3, identV3Defaults} from './compositions/CivicClarityIdentV3';
+import {CivicClarityIdentV4, identV4Defaults} from './compositions/CivicClarityIdentV4';
 import {CivicClarityAvatar, CivicClarityBanner, CivicClarityThumbnail, avatarDefaults, bannerDefaults, thumbnailDefaults} from './compositions/Channel';
 
 export const FPS = 24;
@@ -49,6 +50,15 @@ export const RemotionRoot: React.FC = () => {
         {...UHD}
         durationInFrames={Math.round(identV3Defaults.durationInSeconds * FPS)}
         defaultProps={identV3Defaults}
+        calculateMetadata={identMeta}
+      />
+      {/* Targeted final revisions: new subtitle + no mirrored/repeated imagery (V3 kept as backup) */}
+      <Composition
+        id="CivicClarityIdentV4"
+        component={CivicClarityIdentV4}
+        {...UHD}
+        durationInFrames={Math.round(identV4Defaults.durationInSeconds * FPS)}
+        defaultProps={identV4Defaults}
         calculateMetadata={identMeta}
       />
       {/* Title-only layers on transparent background (render with ProRes 4444 or VP9 alpha) */}

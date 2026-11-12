@@ -1,0 +1,52 @@
+{
+ "subtitle": "INVESTIGATING LEGISLATION",
+ "subtitle_report": {
+  "glyph_registration_shifts_px": {
+   "n": 26,
+   "max_abs": 12
+  },
+  "calibration_params": {
+   "edge_sigma": 1.0,
+   "shadow_k": 0.45,
+   "shadow_sigma": 6.0,
+   "shadow_dx": 6.0,
+   "shadow_dy": 4.0,
+   "glow_g": 0.0,
+   "glow_sigma": 8.0
+  },
+  "letter_colour_bgr": [
+   241.0,
+   244.2,
+   246.5
+  ],
+  "calibration_mae_original_wording": 15.79,
+  "mae_if_letters_absent": 64.97,
+  "rules": {
+   "left": [
+    248,
+    395.8
+   ],
+   "right": [
+    1161.2,
+    1304
+   ],
+   "gap_left": 33,
+   "gap_right": 30
+  }
+ },
+ "letter_centres_x": [
+  264.35004436557233,
+  365.7598484848485,
+  439.25436893203886,
+  525.5508365508366,
+  591.3343195266273,
+  740.457258834766,
+  840.7557603686636,
+  947.1712895377129,
+  1037.3038779402416,
+  1115.2697606961567,
+  1185.638229634381,
+  1276.3929654335961
+ ],
+ "extensions": "procedural (seeded fBm/domain warp, palette from reference) + FSR transition; no mirroring or copying"
+}

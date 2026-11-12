@@ -1,0 +1,376 @@
+{
+ "frame": [
+  3840,
+  2160
+ ],
+ "band_placement_in_frame": {
+  "scale": 2.5,
+  "x0": 0.0,
+  "y0": 725.0,
+  "match_score": 0.997,
+  "band_rect_px": [
+   0,
+   725,
+   3840,
+   1840
+  ],
+  "band_width_pct_of_frame": 100.0,
+  "band_height_pct_of_frame": 51.6,
+  "below_band_pct_of_frame": 14.8,
+  "above_band_pct_of_frame": 33.6
+ },
+ "reference": {
+  "wordmark_bbox": [
+   173,
+   205,
+   1332,
+   346
+  ],
+  "wordmark_letters": [
+   [
+    173,
+    205,
+    337,
+    346
+   ],
+   [
+    344,
+    252,
+    389,
+    341
+   ],
+   [
+    392,
+    252,
+    501,
+    343
+   ],
+   [
+    504,
+    252,
+    548,
+    341
+   ],
+   [
+    556,
+    249,
+    654,
+    343
+   ],
+   [
+    688,
+    205,
+    831,
+    346
+   ],
+   [
+    814,
+    252,
+    890,
+    341
+   ],
+   [
+    890,
+    250,
+    996,
+    342
+   ],
+   [
+    995,
+    252,
+    1137,
+    342
+   ],
+   [
+    1142,
+    251,
+    1230,
+    341
+   ],
+   [
+    1231,
+    252,
+    1332,
+    342
+   ]
+  ],
+  "letter_material": {
+   "L_mean": 76.1,
+   "L_p10": 43.9,
+   "L_p50": 83.5,
+   "L_p90": 98.0,
+   "a_mean": 4.9,
+   "b_mean": 15.4,
+   "pixels": 34086
+  },
+  "descriptor_bbox": [
+   386,
+   378,
+   1173,
+   405
+  ],
+  "star": {
+   "cx": 768.8,
+   "cy": 418.4,
+   "w": 95,
+   "h": 47
+  },
+  "glow_line": {
+   "y": 357,
+   "x1": 415,
+   "x2": 1156
+  },
+  "arc": {
+   "cx": 765.2,
+   "cy": 383.4,
+   "r": 370.7,
+   "points": 68
+  },
+  "dome": {
+   "width_at_y120": [
+    701,
+    816
+   ],
+   "width_at_y170": [
+    677,
+    842
+   ],
+   "width_at_y198": [
+    760,
+    822
+   ],
+   "finial_top_y": 0
+  }
+ },
+ "candidate": {
+  "wordmark_bbox": [
+   173,
+   205,
+   1332,
+   346
+  ],
+  "wordmark_letters": [
+   [
+    173,
+    205,
+    254,
+    257
+   ],
+   [
+    217,
+    238,
+    337,
+    346
+   ],
+   [
+    344,
+    252,
+    390,
+    342
+   ],
+   [
+    393,
+    252,
+    501,
+    343
+   ],
+   [
+    504,
+    252,
+    549,
+    342
+   ],
+   [
+    556,
+    250,
+    654,
+    343
+   ],
+   [
+    689,
+    205,
+    831,
+    346
+   ],
+   [
+    815,
+    252,
+    890,
+    341
+   ],
+   [
+    890,
+    250,
+    996,
+    342
+   ],
+   [
+    995,
+    252,
+    1095,
+    342
+   ],
+   [
+    1092,
+    252,
+    1138,
+    342
+   ],
+   [
+    1142,
+    251,
+    1230,
+    342
+   ],
+   [
+    1231,
+    252,
+    1332,
+    342
+   ]
+  ],
+  "letter_material": {
+   "L_mean": 75.9,
+   "L_p10": 44.3,
+   "L_p50": 83.5,
+   "L_p90": 97.3,
+   "a_mean": 4.9,
+   "b_mean": 15.3,
+   "pixels": 34086
+  },
+  "descriptor_bbox": [
+   370,
+   379,
+   1189,
+   405
+  ],
+  "star": {
+   "cx": 768.2,
+   "cy": 418.7,
+   "w": 95,
+   "h": 33
+  },
+  "glow_line": {
+   "y": 357,
+   "x1": 437,
+   "x2": 1147
+  },
+  "arc": {
+   "cx": 765.7,
+   "cy": 383.2,
+   "r": 370.5,
+   "points": 66
+  },
+  "dome": {
+   "width_at_y120": [
+    701,
+    816
+   ],
+   "width_at_y170": [
+    677,
+    842
+   ],
+   "width_at_y198": [
+    760,
+    822
+   ],
+   "finial_top_y": 0
+  }
+ },
+ "delta_candidate_minus_reference": {
+  "wordmark_bbox": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "wordmark_letters": null,
+  "letter_material": {
+   "L_mean": -0.2,
+   "L_p10": 0.4,
+   "L_p50": 0.0,
+   "L_p90": -0.7,
+   "a_mean": 0.0,
+   "b_mean": -0.1,
+   "pixels": 0.0
+  },
+  "descriptor_bbox": [
+   -16.0,
+   1.0,
+   16.0,
+   0.0
+  ],
+  "star": {
+   "cx": -0.6,
+   "cy": 0.3,
+   "w": 0.0,
+   "h": -14.0
+  },
+  "glow_line": {
+   "y": 0.0,
+   "x1": 22.0,
+   "x2": -9.0
+  },
+  "arc": {
+   "cx": 0.5,
+   "cy": -0.2,
+   "r": -0.2,
+   "points": -2.0
+  },
+  "dome": {
+   "width_at_y120": [
+    0.0,
+    0.0
+   ],
+   "width_at_y170": [
+    0.0,
+    0.0
+   ],
+   "width_at_y198": [
+    0.0,
+    0.0
+   ],
+   "finial_top_y": 0.0
+  }
+ },
+ "pixel_similarity": {
+  "whole_band": {
+   "mae": 5.91,
+   "ssim": 0.91,
+   "mean_luma_ref": 51.5,
+   "mean_luma_cand": 49.6
+  },
+  "title": {
+   "mae": 4.76,
+   "ssim": 0.952,
+   "mean_luma_ref": 71.5,
+   "mean_luma_cand": 71.4
+  },
+  "descriptor_rules_star": {
+   "mae": 17.53,
+   "ssim": 0.705,
+   "mean_luma_ref": 27.4,
+   "mean_luma_cand": 23.4
+  },
+  "dome": {
+   "mae": 6.74,
+   "ssim": 0.942,
+   "mean_luma_ref": 99.3,
+   "mean_luma_cand": 98.8
+  },
+  "flag": {
+   "mae": 6.46,
+   "ssim": 0.872,
+   "mean_luma_ref": 34.0,
+   "mean_luma_cand": 29.9
+  },
+  "sky_right": {
+   "mae": 1.51,
+   "ssim": 0.981,
+   "mean_luma_ref": 44.5,
+   "mean_luma_cand": 44.1
+  }
+ },
+ "title_width_pct_of_frame": 75.5,
+ "title_width_pct_of_reference_image": 75.5
+}

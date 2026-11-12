@@ -1,0 +1,363 @@
+[
+ {
+  "frame": "/tmp/claude-0/-home-user-2026-science-intelligence-atlas/e66a7945-ad83-5353-b0f3-021ed70a7a91/scratchpad/v3/ref_band.png",
+  "seam_mirror_ncc": {},
+  "patches_tested": 300,
+  "copy_hits": 25,
+  "extension_copy_hits": 0,
+  "band_internal_hits_natural": 25,
+  "copy_hit_rate": 0.083,
+  "hits": [
+   {
+    "patch_xy_960": [
+     610,
+     48
+    ],
+    "ncc": 0.946,
+    "match": "hflip",
+    "at": [
+     618,
+     52
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     635,
+     95
+    ],
+    "ncc": 0.928,
+    "match": "rot180",
+    "at": [
+     283,
+     190
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     653,
+     71
+    ],
+    "ncc": 0.973,
+    "match": "hflip",
+    "at": [
+     659,
+     74
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     631,
+     50
+    ],
+    "ncc": 0.921,
+    "match": "hflip",
+    "at": [
+     644,
+     60
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     667,
+     91
+    ],
+    "ncc": 0.931,
+    "match": "hflip",
+    "at": [
+     666,
+     83
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     315,
+     54
+    ],
+    "ncc": 0.942,
+    "match": "hflip",
+    "at": [
+     323,
+     50
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     636,
+     72
+    ],
+    "ncc": 0.943,
+    "match": "hflip",
+    "at": [
+     639,
+     71
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     629,
+     86
+    ],
+    "ncc": 0.968,
+    "match": "rot180",
+    "at": [
+     294,
+     202
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     645,
+     100
+    ],
+    "ncc": 0.964,
+    "match": "hflip",
+    "at": [
+     647,
+     97
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     513,
+     14
+    ],
+    "ncc": 0.948,
+    "match": "hflip",
+    "at": [
+     508,
+     13
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     303,
+     41
+    ],
+    "ncc": 0.956,
+    "match": "hflip",
+    "at": [
+     312,
+     36
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     301,
+     52
+    ],
+    "ncc": 0.935,
+    "match": "hflip",
+    "at": [
+     312,
+     45
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     313,
+     37
+    ],
+    "ncc": 0.948,
+    "match": "hflip",
+    "at": [
+     321,
+     33
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     278,
+     89
+    ],
+    "ncc": 0.956,
+    "match": "hflip",
+    "at": [
+     282,
+     89
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     428,
+     3
+    ],
+    "ncc": 0.965,
+    "match": "hflip",
+    "at": [
+     428,
+     3
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     332,
+     51
+    ],
+    "ncc": 0.944,
+    "match": "hflip",
+    "at": [
+     335,
+     51
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     633,
+     88
+    ],
+    "ncc": 0.971,
+    "match": "vflip",
+    "at": [
+     281,
+     188
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     280,
+     90
+    ],
+    "ncc": 0.957,
+    "match": "hflip",
+    "at": [
+     284,
+     90
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     314,
+     60
+    ],
+    "ncc": 0.93,
+    "match": "hflip",
+    "at": [
+     323,
+     55
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     605,
+     43
+    ],
+    "ncc": 0.938,
+    "match": "hflip",
+    "at": [
+     608,
+     43
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     632,
+     86
+    ],
+    "ncc": 0.977,
+    "match": "vflip",
+    "at": [
+     280,
+     186
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     440,
+     3
+    ],
+    "ncc": 0.982,
+    "match": "hflip",
+    "at": [
+     440,
+     3
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     622,
+     66
+    ],
+    "ncc": 0.931,
+    "match": "hflip",
+    "at": [
+     632,
+     73
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     526,
+     58
+    ],
+    "ncc": 0.93,
+    "match": "none",
+    "at": [
+     159,
+     178
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   },
+   {
+    "patch_xy_960": [
+     648,
+     81
+    ],
+    "ncc": 0.962,
+    "match": "hflip",
+    "at": [
+     651,
+     80
+    ],
+    "patch_region": "band",
+    "match_region": "band"
+   }
+  ]
+ }
+]
