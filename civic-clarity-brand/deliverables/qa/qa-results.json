@@ -1,0 +1,176 @@
+{
+  "generated": "2026-11-12T01:28:28.540Z",
+  "results": [
+    {
+      "name": "Ident resolution 3840x2160",
+      "pass": true,
+      "detail": "3840x2160"
+    },
+    {
+      "name": "Ident frame rate 24 fps",
+      "pass": true,
+      "detail": "24/1"
+    },
+    {
+      "name": "Ident frame count 108 (4.5 s)",
+      "pass": true,
+      "detail": "108 frames, video 4.500000s"
+    },
+    {
+      "name": "Ident H.264 yuv420p BT.709 limited range",
+      "pass": true,
+      "detail": "h264 High yuv420p bt709/tv"
+    },
+    {
+      "name": "Ident has stereo 48 kHz audio",
+      "pass": true,
+      "detail": "aac 48000 Hz 2ch"
+    },
+    {
+      "name": "Audio integrated loudness within -20..-14 LUFS",
+      "pass": true,
+      "detail": "-17.2 LUFS"
+    },
+    {
+      "name": "Audio true peak <= -1 dBTP (post-AAC)",
+      "pass": true,
+      "detail": "-3 dBTP"
+    },
+    {
+      "name": "Silent version has no audio stream",
+      "pass": true,
+      "detail": "video"
+    },
+    {
+      "name": "Alpha overlay is VP9 with alpha_mode=1",
+      "pass": true,
+      "detail": "vp9 alpha_mode=1"
+    },
+    {
+      "name": "civic-clarity_avatar_1024.png is 1024x1024",
+      "pass": true,
+      "detail": "1024x1024"
+    },
+    {
+      "name": "civic-clarity_banner_2560x1440.png is 2560x1440",
+      "pass": true,
+      "detail": "2560x1440"
+    },
+    {
+      "name": "civic-clarity_thumbnail-A-institution_1280x720.png is 1280x720",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "civic-clarity_thumbnail-B-evidence_1280x720.png is 1280x720",
+      "pass": true,
+      "detail": "1280x720"
+    },
+    {
+      "name": "All transparent/mono logo PNGs are RGBA",
+      "pass": true,
+      "detail": "colour type 6 verified for every transparent-* and mono-* export"
+    },
+    {
+      "name": "Banner under YouTube 6 MB limit",
+      "pass": true,
+      "detail": "3477 KB"
+    },
+    {
+      "name": "Thumbnail under YouTube 2 MB limit: civic-clarity_thumbnail-A-institution_1280x720.png",
+      "pass": true,
+      "detail": "965 KB"
+    },
+    {
+      "name": "Thumbnail under YouTube 2 MB limit: civic-clarity_thumbnail-A_GUIDES.png",
+      "pass": true,
+      "detail": "971 KB"
+    },
+    {
+      "name": "Thumbnail under YouTube 2 MB limit: civic-clarity_thumbnail-B-evidence_1280x720.png",
+      "pass": true,
+      "detail": "644 KB"
+    },
+    {
+      "name": "Live-text source spells CIVIC CLARITY",
+      "pass": true
+    },
+    {
+      "name": "Outlined SVG masters spell CIVIC CLARITY / INVESTIGATIVE DOCUMENTARIES",
+      "pass": true,
+      "detail": "42 SVG masters checked; every wordmark and descriptor group verified glyph-by-glyph (mark-only files contain the single C)"
+    },
+    {
+      "name": "Geometry glyph sequence",
+      "pass": true
+    },
+    {
+      "name": "Contrast ivory on midnight (wordmark, titles) >= 7:1",
+      "pass": true,
+      "detail": "15.32:1"
+    },
+    {
+      "name": "Contrast steel on midnight (descriptor, captions) >= 4.5:1",
+      "pass": true,
+      "detail": "11.62:1"
+    },
+    {
+      "name": "Contrast steel on navy (evidence card source line) >= 4.5:1",
+      "pass": true,
+      "detail": "10.51:1"
+    },
+    {
+      "name": "Contrast ivory on navy (evidence card excerpt) >= 7:1",
+      "pass": true,
+      "detail": "13.84:1"
+    },
+    {
+      "name": "Contrast gold on midnight (kicker / accent text) >= 4.5:1",
+      "pass": true,
+      "detail": "8.06:1"
+    },
+    {
+      "name": "Contrast gold on navy (evidence label) >= 4.5:1",
+      "pass": true,
+      "detail": "7.29:1"
+    },
+    {
+      "name": "Contrast ink on paper (light wordmark) >= 7:1",
+      "pass": true,
+      "detail": "15.04:1"
+    },
+    {
+      "name": "Contrast civicBlue on paper (light descriptor) >= 4.5:1",
+      "pass": true,
+      "detail": "7.67:1"
+    },
+    {
+      "name": "Contrast copper on paper (decorative rules only) >= 3:1",
+      "pass": true,
+      "detail": "3.01:1"
+    },
+    {
+      "name": "Banner wordmark lockup inside 1546x423 safe area",
+      "pass": true,
+      "detail": {
+        "lockup": [
+          690,
+          579,
+          1870,
+          869
+        ],
+        "safe": [
+          507,
+          508.5,
+          2053,
+          931.5
+        ]
+      }
+    },
+    {
+      "name": "Every font/audio dependency listed in ASSET_PROVENANCE.csv",
+      "pass": true,
+      "detail": "all listed"
+    }
+  ]
+}

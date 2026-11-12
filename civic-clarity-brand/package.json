@@ -1,0 +1,41 @@
+{
+  "name": "civic-clarity-brand",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Civic Clarity — Institutional Cinematic brand master and motion ident (review candidate, not owner-approved).",
+  "type": "module",
+  "scripts": {
+    "logos": "node scripts/build-logos.mjs",
+    "audio": "node scripts/synth-sonic-ident.mjs",
+    "build": "npm run logos && npm run audio && npm run typecheck",
+    "typecheck": "tsc -p .",
+    "studio": "remotion studio src/index.ts",
+    "render": "scripts/render-all.sh all",
+    "render:ident": "scripts/render-all.sh ident",
+    "render:alpha": "scripts/render-all.sh alpha",
+    "render:mezzanine": "scripts/render-all.sh mezzanine",
+    "render:stills": "scripts/render-all.sh stills",
+    "render:components": "scripts/render-all.sh components",
+    "qa": "node scripts/qa.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.543",
+    "@remotion/cli": "4.0.543",
+    "@remotion/renderer": "4.0.543",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.543"
+  },
+  "devDependencies": {
+    "@expo-google-fonts/cinzel": "0.4.2",
+    "@expo-google-fonts/montserrat": "0.4.2",
+    "@resvg/resvg-js": "2.6.2",
+    "@types/node": "22.15.30",
+    "@types/react": "19.1.8",
+    "opentype.js": "1.3.4",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
