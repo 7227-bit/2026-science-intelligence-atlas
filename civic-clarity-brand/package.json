@@ -2,7 +2,7 @@
   "name": "civic-clarity-brand",
   "version": "0.1.0",
   "private": true,
-  "description": "Civic Clarity — Institutional Cinematic brand master and motion ident (review candidate, not owner-approved).",
+  "description": "Civic Clarity \u2014 Institutional Cinematic brand master and motion ident (review candidate, not owner-approved).",
   "type": "module",
   "scripts": {
     "logos": "node scripts/build-logos.mjs",
@@ -16,7 +16,11 @@
     "render:mezzanine": "scripts/render-all.sh mezzanine",
     "render:stills": "scripts/render-all.sh stills",
     "render:components": "scripts/render-all.sh components",
-    "qa": "node scripts/qa.mjs"
+    "qa": "node scripts/qa.mjs",
+    "render:identv2": "scripts/render-all.sh identv2",
+    "render:mezzaninev2": "scripts/render-all.sh mezzaninev2",
+    "plates": "scripts/plate/build_plates.sh out/plate-work",
+    "type:cinematic": "node scripts/build-cinematic-type.mjs"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.543",

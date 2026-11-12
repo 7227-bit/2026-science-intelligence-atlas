@@ -18,6 +18,18 @@ ident() {
     "$D/ident/civic-clarity-ident_3840x2160_24p_4.5s_SILENT.mp4"
   cp public/audio/civic-clarity-sonic-ident.wav "$D/ident/civic-clarity-sonic-ident_48k24b.wav"
 }
+identv2() {
+  # Revision Round 2 candidate (WebGL2 plate compositor -> needs ANGLE/SwiftShader: --gl=swangle)
+  mkdir -p "$D/ident/v2"
+  $R render "$BUNDLE" CivicClarityIdentV2 "$D/ident/v2/civic-clarity-ident-V2_3840x2160_24p_4.5s.mp4" \
+    --gl=swangle --codec=h264 --crf=14 --pixel-format=yuv420p --color-space=bt709 --audio-codec=aac --audio-bitrate=320k --x264-preset=slow --log=error
+  ffmpeg -hide_banner -loglevel error -y -i "$D/ident/v2/civic-clarity-ident-V2_3840x2160_24p_4.5s.mp4" -map 0:v -c copy \
+    "$D/ident/v2/civic-clarity-ident-V2_3840x2160_24p_4.5s_SILENT.mp4"
+}
+mezzaninev2() {
+  $R render "$BUNDLE" CivicClarityIdentV2 out/mezzanine/civic-clarity-ident-V2_3840x2160_24p_ProRes422HQ.mov \
+    --gl=swangle --codec=prores --prores-profile=hq --image-format=png --log=error
+}
 alpha() {
   $R render "$BUNDLE" CivicClarityIdentAlpha "$D/ident/civic-clarity-ident-title_ALPHA_3840x2160_24p.webm" \
     --codec=vp9 --image-format=png --pixel-format=yuva420p --crf=18 --muted --log=error
@@ -54,6 +66,8 @@ components() {
 bundle
 case "${1:-all}" in
   ident) ident ;;
+  identv2) identv2 ;;
+  mezzaninev2) mezzaninev2 ;;
   alpha) alpha ;;
   mezzanine) mezzanine ;;
   stills) stills ;;

@@ -12,6 +12,22 @@ This is a self-contained Remotion + React + TypeScript project. It builds:
 
 They all share one token file, `src/brand/tokens.json`.
 
+## Revision Round 2 — Cinematic Ident V2 (candidate)
+
+After the owner's Round 2 direction, V2 was added **alongside** V1 (V1 is unchanged). V2 is built from the owner-selected reference artwork:
+- The artwork is upscaled 4× with ESRGAN and rebuilt into independent layers: sky, Capitol matte, flag cloth warp, and arc and light.
+- It is composited by a WebGL2 shader.
+- On top sits a vector title fitted to the reference's exact letter positions.
+
+| | |
+|---|---|
+| Composition | `CivicClarityIdentV2` (same props as `CivicClarityIdent`) |
+| Render | `npm run render:identv2` → `deliverables/ident/v2/` (needs `--gl=swangle`, already in the script) |
+| Plates | `public/plates/v2/` (committed); rebuild with `scripts/plate/build_plates.sh` (see `scripts/plate/README.md`) |
+| Comparison | `deliverables/comparison/`: side-by-side and sequential MP4s, full-resolution V1/V2 final frames, reference/V1/V2 still |
+| Review | `OWNER_REVIEW_V2.md`, `QA_REPORT_V2.md` |
+| Title geometry | `npm run type:cinematic` → `src/brand/generated/cinematicType.json` |
+
 ## Quick start
 
 ```bash
@@ -51,7 +67,7 @@ Render times on a 4-vCPU container: about 2.5 min for the 4K H.264 ident, and ab
 | `deliverables/youtube/` | Avatar 1024 (+ crop guide, dome variant), banner 2560×1440 (+ safe-area proof), thumbnails A/B (+ guide) |
 | `deliverables/components/` | Title, lower-third (incl. low-bandwidth + alpha WebM), evidence (primary / reconstruction / low-bandwidth), end card (+ end-screen slots) |
 | `deliverables/qa/` | Contact sheet, reference comparison, avatar small-size test, alpha proof, logo overviews, `qa-results.json` |
-| `references/OWNER_SELECTED_REFERENCE.jpeg` | Owner reference. Used for comparison only, never composited into deliverables. |
+| `references/OWNER_SELECTED_REFERENCE.jpeg` | Owner reference. V1: comparison only. V2: source of the plates (owner-directed). |
 
 ## Source layout
 
@@ -98,5 +114,5 @@ npx remotion still src/index.ts CivicClarityThumbnail out/my-film-thumb.png \
 ## Honesty notes
 
 - **2.5D, not 3D.** The Capitol and flag are procedural vector layers with projected shading (cylindrical colonnades, ellipsoidal ribs, strip-displaced cloth). There is no 3D mesh, no Blender scene and no cloth simulation.
-- The owner reference image is **not** traced, cut up or animated anywhere in this package.
+- **V1** does not use the owner reference image anywhere. **V2** is derived from it by explicit owner direction (Round 2). V2 is a 2.5D composite of that raster artwork, with synthesised fill where its lettering and arc were removed. It is not 3D and not photography of the real building.
 - The wordmark typeface is **Cinzel (OFL)**, a licensed stand-in for the Trajan Pro named on the concept board. See BRAND_SPEC.md §Typography.

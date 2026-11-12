@@ -53,6 +53,34 @@ if (exists(ALPHA)) {
   check('Alpha overlay is VP9 with alpha_mode=1', v.codec_name === 'vp9' && (v.tags?.alpha_mode === '1' || v.tags?.ALPHA_MODE === '1'), `${v.codec_name} alpha_mode=${v.tags?.alpha_mode ?? v.tags?.ALPHA_MODE}`);
 } else check('Alpha overlay exists', false, ALPHA);
 
+/* 1b. v2 ident (Revision Round 2) */
+const V2 = 'deliverables/ident/v2/civic-clarity-ident-V2_3840x2160_24p_4.5s.mp4';
+if (exists(V2)) {
+  const j = probe(P(V2));
+  const v = j.streams.find((s) => s.codec_type === 'video');
+  const a = j.streams.find((s) => s.codec_type === 'audio');
+  check('V2 master 3840x2160', v.width === 3840 && v.height === 2160, `${v.width}x${v.height}`);
+  check('V2 master exactly 24 fps (r_frame_rate and avg_frame_rate)', v.r_frame_rate === '24/1' && v.avg_frame_rate === '24/1', `${v.r_frame_rate} / ${v.avg_frame_rate}`);
+  check('V2 master 108 frames = 4.500 s', Number(v.nb_frames) === 108 && Math.abs(Number(v.duration) - 4.5) < 1e-6, `${v.nb_frames} frames, ${v.duration}s`);
+  check('V2 H.264 yuv420p BT.709', v.codec_name === 'h264' && v.pix_fmt === 'yuv420p' && v.color_space === 'bt709', `${v.codec_name} ${v.pix_fmt} ${v.color_space}/${v.color_range}`);
+  check('V2 stereo 48 kHz audio', a && a.channels === 2 && a.sample_rate === '48000', a ? `${a.codec_name} ${a.sample_rate} Hz ${a.channels}ch` : 'none');
+  if (exists(IDENT)) {
+    const pcm = (f) => execFileSync('ffmpeg', ['-loglevel', 'error', '-i', P(f), '-vn', '-map', '0:a', '-f', 's16le', '-'], {maxBuffer: 64 * 1024 * 1024});
+    check('V2 audio cue preserved (decoded PCM byte-identical to V1)', pcm(V2).equals(pcm(IDENT)));
+  }
+  const S2 = 'deliverables/ident/v2/civic-clarity-ident-V2_3840x2160_24p_4.5s_SILENT.mp4';
+  if (exists(S2)) check('V2 silent version has no audio stream', !probe(P(S2)).streams.some((s) => s.codec_type === 'audio'));
+  const ct = JSON.parse(fs.readFileSync(P('src/brand/generated/cinematicType.json'), 'utf8'));
+  check('V2 title outlines spell CIVIC CLARITY', ct.words.map((w) => w.glyphs.map((g) => g.char).join('')).join(' ') === 'CIVIC CLARITY');
+  check('V2 descriptor outlines spell INVESTIGATIVE DOCUMENTARIES', ct.descriptor.glyphs.map((g) => g.char).join('') === 'INVESTIGATIVEDOCUMENTARIES');
+  const bb = ct.words.flatMap((w) => w.glyphs.map((g) => g.bbox));
+  const x1 = Math.min(...bb.map((b) => b[0])), x2 = Math.max(...bb.map((b) => b[2]));
+  check('V2 title registered to reference span (201..1332 band px, ±3)', Math.abs(x1 - 201) <= 3 && Math.abs(x2 - 1332) <= 3, `${x1.toFixed(1)}..${x2.toFixed(1)}`);
+  const K = 1920 / 1302;
+  const dx1 = (x1 - 117) * K, dx2 = (x2 - 117) * K;
+  check('V2 title inside 90% title-safe at final frame', dx1 >= 96 && dx2 <= 1824, `design x ${dx1.toFixed(0)}..${dx2.toFixed(0)} (safe 96..1824)`);
+} else check('V2 master exists', false, V2);
+
 /* 2. PNG dimensions */
 const pngSize = (f) => {
   const b = fs.readFileSync(P(f));

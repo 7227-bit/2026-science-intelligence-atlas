@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T01:28:28.540Z",
+  "generated": "2026-11-12T03:17:34.989Z",
   "results": [
     {
       "name": "Ident resolution 3840x2160",
@@ -45,6 +45,57 @@
       "name": "Alpha overlay is VP9 with alpha_mode=1",
       "pass": true,
       "detail": "vp9 alpha_mode=1"
+    },
+    {
+      "name": "V2 master 3840x2160",
+      "pass": true,
+      "detail": "3840x2160"
+    },
+    {
+      "name": "V2 master exactly 24 fps (r_frame_rate and avg_frame_rate)",
+      "pass": true,
+      "detail": "24/1 / 24/1"
+    },
+    {
+      "name": "V2 master 108 frames = 4.500 s",
+      "pass": true,
+      "detail": "108 frames, 4.500000s"
+    },
+    {
+      "name": "V2 H.264 yuv420p BT.709",
+      "pass": true,
+      "detail": "h264 yuv420p bt709/tv"
+    },
+    {
+      "name": "V2 stereo 48 kHz audio",
+      "pass": true,
+      "detail": "aac 48000 Hz 2ch"
+    },
+    {
+      "name": "V2 audio cue preserved (decoded PCM byte-identical to V1)",
+      "pass": true
+    },
+    {
+      "name": "V2 silent version has no audio stream",
+      "pass": true
+    },
+    {
+      "name": "V2 title outlines spell CIVIC CLARITY",
+      "pass": true
+    },
+    {
+      "name": "V2 descriptor outlines spell INVESTIGATIVE DOCUMENTARIES",
+      "pass": true
+    },
+    {
+      "name": "V2 title registered to reference span (201..1332 band px, ±3)",
+      "pass": true,
+      "detail": "201.0..1332.0"
+    },
+    {
+      "name": "V2 title inside 90% title-safe at final frame",
+      "pass": true,
+      "detail": "design x 124..1792 (safe 96..1824)"
     },
     {
       "name": "civic-clarity_avatar_1024.png is 1024x1024",
